@@ -5,6 +5,6 @@
 
 void	dayTwo();
 
-int		calcScore(const std::string& opponentMove, const std::string& playerMove);
+int		calcScore(const std::string& opponentMove, const std::string& playerMove, bool isPartTwo = false);
 int		calcWin(const std::string& opponentMove, const std::string& playerMove);
 int		calcDraw(const std::string& opponentMove, const std::string& playerMove);

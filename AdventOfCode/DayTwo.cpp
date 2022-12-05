@@ -20,11 +20,30 @@ int		calcDraw(const std::string& opponentMove, const std::string& playerMove)
 		return (0);
 }
 
-int		calcScore(const std::string& opponentMove, const std::string& playerMove)
+int		calcScore(const std::string& opponentMove, const std::string& playerMove, bool isPartTwo)
 {
-	int moveScore = 1 + playerMove[0] - 'X';
+	int moveScore = 0;
 
-	return (moveScore + calcWin(opponentMove, playerMove) + calcDraw(opponentMove, playerMove));
+	if (!isPartTwo)
+	{
+		moveScore = 1 + playerMove[0] - 'X';
+
+		return (moveScore + calcWin(opponentMove, playerMove) + calcDraw(opponentMove, playerMove));
+	}
+	else
+	{
+		std::string tempMove = playerMove;
+		if (playerMove == "X")
+			tempMove[0] = 'X' + ((opponentMove[0] - 'A' + 2) % 3);
+		else if (playerMove == "Y")
+			tempMove[0] = 'X' + (opponentMove[0] - 'A');
+		else
+			tempMove[0] = 'X' + ((opponentMove[0] - 'A' + 1) % 3);
+
+		moveScore = 1 + tempMove[0] - 'X';
+
+		return (moveScore + calcWin(opponentMove, tempMove) + calcDraw(opponentMove, tempMove));
+	}
 }
 
 void	dayTwo()
@@ -45,7 +64,7 @@ void	dayTwo()
 		else
 		{
 			playerMove = move;
-			score += calcScore(opponentMove, playerMove);
+			score += calcScore(opponentMove, playerMove, true);
 		}
 		isOpponentMove = !isOpponentMove;
 	}
