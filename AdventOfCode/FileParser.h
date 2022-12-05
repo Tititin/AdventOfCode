@@ -25,5 +25,8 @@ public:
 
 	//DAY TWO
 	std::string readMove();
+
+	//DAY THREE
+	std::string readRucksack();
 };
 

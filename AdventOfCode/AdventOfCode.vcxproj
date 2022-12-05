@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DayOne.h" />
+    <ClInclude Include="DayThree.h" />
     <ClInclude Include="DayTwo.h" />
     <ClInclude Include="Elf.h" />
     <ClInclude Include="FileParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DayOne.cpp" />
+    <ClCompile Include="DayThree.cpp" />
     <ClCompile Include="DayTwo.cpp" />
     <ClCompile Include="Elf.cpp" />
     <ClCompile Include="FileParser.cpp" />
@@ -142,6 +144,7 @@
   <ItemGroup>
     <Text Include="..\inputD1.txt" />
     <Text Include="..\inputD2.txt" />
+    <Text Include="..\inputD3.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,6 +27,9 @@
     <ClInclude Include="DayTwo.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="DayThree.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Elf.cpp">
@@ -44,12 +47,18 @@
     <ClCompile Include="DayTwo.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="DayThree.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\inputD1.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
     <Text Include="..\inputD2.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="..\inputD3.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>

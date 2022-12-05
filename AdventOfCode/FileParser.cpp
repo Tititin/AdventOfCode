@@ -57,3 +57,11 @@ std::string FileParser::readMove()
 
 	return (move);
 }
+
+std::string FileParser::readRucksack()
+{
+	std::string line;
+
+	std::getline(_fileStream, line);
+	return (line);
+}
