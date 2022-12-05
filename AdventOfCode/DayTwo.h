@@ -3,4 +3,8 @@
 #include "FileParser.h"
 #include <vector>
 
-void dayTwo();
+void	dayTwo();
+
+int		calcScore(const std::string& opponentMove, const std::string& playerMove);
+int		calcWin(const std::string& opponentMove, const std::string& playerMove);
+int		calcDraw(const std::string& opponentMove, const std::string& playerMove);

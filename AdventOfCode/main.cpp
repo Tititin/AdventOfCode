@@ -1,14 +1,13 @@
 #include "Elf.h"
 #include "FileParser.h"
 #include "DayOne.h"
+#include "DayTwo.h"
 #include <vector>
 
 int main()
 {
-
-
-
-	dayOne();
+	//dayOne();
+	dayTwo();
 
 	return (0);
 }
