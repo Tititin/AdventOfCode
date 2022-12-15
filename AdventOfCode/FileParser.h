@@ -28,5 +28,8 @@ public:
 
 	//DAY THREE
 	std::string readRucksack();
+
+	//DAY FOUR
+	std::string getPairSection();
 };
 

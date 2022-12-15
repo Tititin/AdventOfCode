@@ -1,15 +1,11 @@
-#include "Elf.h"
-#include "FileParser.h"
-#include "DayOne.h"
-#include "DayTwo.h"
-#include "DayThree.h"
-#include <vector>
+#include "main.h"
 
 int main()
 {
 	//dayOne();
 	//dayTwo();
-	dayThree(true);
+	//dayThree();
+	dayFour();
 
 	return (0);
 }

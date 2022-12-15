@@ -65,3 +65,12 @@ std::string FileParser::readRucksack()
 	std::getline(_fileStream, line);
 	return (line);
 }
+
+std::string FileParser::getPairSection()
+{
+	std::string sections;
+
+	_fileStream >> sections;
+
+	return (sections);
+}
