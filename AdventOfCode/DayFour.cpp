@@ -16,10 +16,20 @@ std::vector<int>	cutZones(const std::string& section)
 	return (zones);
 }
 
-bool checkIfOverlappingZones(const std::vector<int>& section1, const std::vector<int>& section2)
+bool checkIfFullyOverlappingZones(const std::vector<int>& section1, const std::vector<int>& section2)
 {
 	if ((section1[0] >= section2[0] && section1[1] <= section2[1])
 		|| (section2[0] >= section1[0] && section2[1] <= section1[1]))
+		return (true);
+	return (false);
+}
+
+bool checkIfPartiallyOverlappingZones(const std::vector<int>& section1, const std::vector<int>& section2)
+{
+	if ((section1[0] >= section2[0] && section1[0] <= section2[1])
+		|| (section1[1] >= section2[0] && section1[1] <= section2[1])
+		|| (section2[0] >= section1[0] && section2[0] <= section1[1])
+		|| (section2[1] >= section1[0] && section2[1] <= section1[1]))
 		return (true);
 	return (false);
 }
@@ -29,23 +39,26 @@ void dayFour(bool isPartTwo)
 	FileParser fileParser("..\\inputD4.txt");
 	int ret = 0;
 
-	if (!isPartTwo)
-	{
-		std::string	pairSections;
+	std::string	pairSections;
 
-		while ((pairSections = fileParser.getPairSection()) != "")
+	while ((pairSections = fileParser.getPairSection()) != "")
+	{
+		std::string firstSection = pairSections.substr(0, pairSections.find(","));
+		std::string secondSection = pairSections.substr(pairSections.find(",") + 1, pairSections.size());
+
+		if (!isPartTwo)
 		{
-			std::string firstSection = pairSections.substr(0, pairSections.find(","));
-			std::string secondSection = pairSections.substr(pairSections.find(",") + 1, pairSections.size());
-			
-			if (checkIfOverlappingZones(cutZones(firstSection), cutZones(secondSection)))
+			if (checkIfFullyOverlappingZones(cutZones(firstSection), cutZones(secondSection)))
+				ret += 1;
+		}
+		else
+		{
+			if (checkIfPartiallyOverlappingZones(cutZones(firstSection), cutZones(secondSection)))
 				ret += 1;
 		}
 
-		std::cout << ret << std::endl;
 	}
-	else
-	{
 
-	}
+	std::cout << ret << std::endl;
+
 }
