@@ -39,6 +39,9 @@
     <ClInclude Include="DayFive.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="DaySix.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Elf.cpp">
@@ -65,6 +68,9 @@
     <ClCompile Include="DayFive.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="DaySix.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\inputD1.txt">
@@ -80,6 +86,9 @@
       <Filter>Fichiers de ressources</Filter>
     </Text>
     <Text Include="..\inputD5.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="..\inputD6.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>

@@ -7,4 +7,5 @@
 #include "DayThree.h"
 #include "DayFour.h"
 #include "DayFive.h"
+#include "DaySix.h"
 #include <vector>

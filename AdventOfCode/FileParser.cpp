@@ -93,3 +93,8 @@ std::map<int, char> FileParser::readStackEdge()
 	}
 	return (edge);
 }
+
+std::string FileParser::readSignal()
+{
+	return (readRucksack()); // Same behavior
+}

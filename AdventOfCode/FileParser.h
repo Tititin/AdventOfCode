@@ -35,5 +35,8 @@ public:
 
 	//DAY 5
 	std::map<int, char> readStackEdge();
+
+	//DAY 6
+	std::string readSignal();
 };
 
