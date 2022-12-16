@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <ios>
+#include <map>
 
 class FileParser
 {
@@ -20,16 +21,19 @@ public:
 	bool openFile(const std::string& fileName);
 	bool closeFile();
 
-	// DAY ONE
+	// DAY 1
 	int readLine();
 
-	//DAY TWO
+	//DAY 2,5
 	std::string readMove();
 
-	//DAY THREE
+	//DAY 3
 	std::string readRucksack();
 
-	//DAY FOUR
+	//DAY 4
 	std::string getPairSection();
+
+	//DAY 5
+	std::map<int, char> readStackEdge();
 };
 

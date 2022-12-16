@@ -74,3 +74,22 @@ std::string FileParser::getPairSection()
 
 	return (sections);
 }
+
+std::map<int, char> FileParser::readStackEdge()
+{
+	std::string edgeLine;
+	std::map<int, char> edge;
+
+	std::getline(_fileStream, edgeLine);
+	for (int i = 0; i < edgeLine.size(); i++)
+	{
+		if (edgeLine[i] == '[')
+		{
+			int pos = i / 4;
+			
+			i += 1;
+			edge[pos] = edgeLine[i];
+		}
+	}
+	return (edge);
+}
