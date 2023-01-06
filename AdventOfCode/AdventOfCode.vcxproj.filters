@@ -42,6 +42,15 @@
     <ClInclude Include="DaySix.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Directory.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="DaySeven.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Elf.cpp">
@@ -71,6 +80,15 @@
     <ClCompile Include="DaySix.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Directory.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="File.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DaySeven.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\inputD1.txt">
@@ -89,6 +107,12 @@
       <Filter>Fichiers de ressources</Filter>
     </Text>
     <Text Include="..\inputD6.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="..\inputD7.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="..\inputD7bis.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>

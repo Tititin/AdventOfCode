@@ -130,10 +130,13 @@
     <ClInclude Include="DayFive.h" />
     <ClInclude Include="DayFour.h" />
     <ClInclude Include="DayOne.h" />
+    <ClInclude Include="DaySeven.h" />
     <ClInclude Include="DaySix.h" />
     <ClInclude Include="DayThree.h" />
     <ClInclude Include="DayTwo.h" />
+    <ClInclude Include="Directory.h" />
     <ClInclude Include="Elf.h" />
+    <ClInclude Include="File.h" />
     <ClInclude Include="FileParser.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
@@ -141,10 +144,13 @@
     <ClCompile Include="DayFive.cpp" />
     <ClCompile Include="DayFour.cpp" />
     <ClCompile Include="DayOne.cpp" />
+    <ClCompile Include="DaySeven.cpp" />
     <ClCompile Include="DaySix.cpp" />
     <ClCompile Include="DayThree.cpp" />
     <ClCompile Include="DayTwo.cpp" />
+    <ClCompile Include="Directory.cpp" />
     <ClCompile Include="Elf.cpp" />
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="FileParser.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -155,6 +161,8 @@
     <Text Include="..\inputD4.txt" />
     <Text Include="..\inputD5.txt" />
     <Text Include="..\inputD6.txt" />
+    <Text Include="..\inputD7.txt" />
+    <Text Include="..\inputD7bis.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

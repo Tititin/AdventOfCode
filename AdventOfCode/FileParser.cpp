@@ -98,3 +98,13 @@ std::string FileParser::readSignal()
 {
 	return (readRucksack()); // Same behavior
 }
+
+int FileParser::getPosInFile()
+{
+	return (_fileStream.tellg());
+}
+
+void FileParser::setPosInFile(int newPos)
+{
+	_fileStream.seekg(newPos, _fileStream.beg);
+}

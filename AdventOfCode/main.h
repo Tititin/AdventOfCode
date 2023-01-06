@@ -8,4 +8,5 @@
 #include "DayFour.h"
 #include "DayFive.h"
 #include "DaySix.h"
+#include "DaySeven.h"
 #include <vector>

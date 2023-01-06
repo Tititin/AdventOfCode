@@ -38,5 +38,9 @@ public:
 
 	//DAY 6
 	std::string readSignal();
+
+	//DAY 7
+	int getPosInFile();
+	void setPosInFile(int newPos);
 };
 
