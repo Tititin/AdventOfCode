@@ -8,7 +8,8 @@ int main()
 	//dayFour();
 	//dayFive();
 	//daySix();
-	daySeven(true);
+	//daySeven();
+	dayEight(true);
 
 	return (0);
 }

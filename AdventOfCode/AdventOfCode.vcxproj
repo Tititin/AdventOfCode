@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DayEight.h" />
     <ClInclude Include="DayFive.h" />
     <ClInclude Include="DayFour.h" />
     <ClInclude Include="DayOne.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DayEight.cpp" />
     <ClCompile Include="DayFive.cpp" />
     <ClCompile Include="DayFour.cpp" />
     <ClCompile Include="DayOne.cpp" />
@@ -163,6 +165,7 @@
     <Text Include="..\inputD6.txt" />
     <Text Include="..\inputD7.txt" />
     <Text Include="..\inputD7bis.txt" />
+    <Text Include="..\inputD8.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

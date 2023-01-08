@@ -108,3 +108,8 @@ void FileParser::setPosInFile(int newPos)
 {
 	_fileStream.seekg(newPos, _fileStream.beg);
 }
+
+std::string FileParser::readMap()
+{
+	return (readSignal()); // Same behavior
+}

@@ -42,5 +42,8 @@ public:
 	//DAY 7
 	int getPosInFile();
 	void setPosInFile(int newPos);
+
+	// DAY 8
+	std::string readMap();
 };
 
