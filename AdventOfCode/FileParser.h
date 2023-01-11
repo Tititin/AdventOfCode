@@ -5,6 +5,7 @@
 #include <string>
 #include <ios>
 #include <map>
+#include <Windows.h>
 
 class FileParser
 {
@@ -24,7 +25,7 @@ public:
 	// DAY 1
 	int readLine();
 
-	//DAY 2,5
+	//DAY 2,5,9,10
 	std::string readMove();
 
 	//DAY 3

@@ -2,7 +2,6 @@
 
 #include "FileParser.h"
 #include <list>
-#include <Windows.h>
 
 typedef struct s_Pos
 {
