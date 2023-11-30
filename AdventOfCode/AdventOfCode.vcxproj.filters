@@ -36,45 +36,4 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\inputD1.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD2.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD3.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD4.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD5.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD6.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD7.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD7bis.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD8.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD9.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD9bis.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD9ter.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-    <Text Include="..\inputD10.txt">
-      <Filter>Fichiers de ressources</Filter>
-    </Text>
-  </ItemGroup>
 </Project>
