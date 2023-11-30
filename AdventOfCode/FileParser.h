@@ -22,29 +22,10 @@ public:
 	bool openFile(const std::string& fileName);
 	bool closeFile();
 
-	// DAY 1
-	int readLine();
+	int			readLineToInt();
+	std::string	readLineToString();
 
-	//DAY 2,5,9,10
-	std::string readMove();
-
-	//DAY 3
-	std::string readRucksack();
-
-	//DAY 4
-	std::string getPairSection();
-
-	//DAY 5
-	std::map<int, char> readStackEdge();
-
-	//DAY 6
-	std::string readSignal();
-
-	//DAY 7
-	int getPosInFile();
-	void setPosInFile(int newPos);
-
-	// DAY 8
-	std::string readMap();
+	int			readWordToInt();
+	std::string readWordToString();
 };
 

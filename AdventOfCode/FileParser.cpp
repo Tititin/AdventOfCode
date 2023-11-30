@@ -31,7 +31,7 @@ bool FileParser::closeFile()
 	return (!_fileStream.is_open());
 }
 
-int FileParser::readLine()
+int FileParser::readLineToInt()
 {
 	int ret;
 	std::string line;
@@ -49,67 +49,29 @@ int FileParser::readLine()
 	return (-1);
 }
 
-std::string FileParser::readMove()
+std::string FileParser::readLineToString()
+{
+	std::string line;
+
+	while (std::getline(_fileStream, line))
+		return (line);
+	return (line);
+}
+
+int FileParser::readWordToInt()
+{
+	int number;
+
+	_fileStream >> number;
+
+	return (number);
+}
+
+std::string FileParser::readWordToString()
 {
 	std::string move;
 
 	_fileStream >> move;
 
 	return (move);
-}
-
-std::string FileParser::readRucksack()
-{
-	std::string line;
-
-	std::getline(_fileStream, line);
-	return (line);
-}
-
-std::string FileParser::getPairSection()
-{
-	std::string sections;
-
-	_fileStream >> sections;
-
-	return (sections);
-}
-
-std::map<int, char> FileParser::readStackEdge()
-{
-	std::string edgeLine;
-	std::map<int, char> edge;
-
-	std::getline(_fileStream, edgeLine);
-	for (int i = 0; i < edgeLine.size(); i++)
-	{
-		if (edgeLine[i] == '[')
-		{
-			int pos = i / 4;
-			
-			i += 1;
-			edge[pos] = edgeLine[i];
-		}
-	}
-	return (edge);
-}
-
-std::string FileParser::readSignal()
-{
-	return (readRucksack()); // Same behavior
-}
-
-int FileParser::getPosInFile()
-{
-	return (_fileStream.tellg());
-}
-
-void FileParser::setPosInFile(int newPos)
-{
-	_fileStream.seekg(newPos, _fileStream.beg);
-}
-
-std::string FileParser::readMap()
-{
-	return (readSignal()); // Same behavior
 }
