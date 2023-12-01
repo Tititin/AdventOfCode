@@ -44,7 +44,7 @@ const int& getTopThreeElvesCalories(std::vector<Elf>& elves)
 void dayOne()
 {
 	std::vector<Elf> elves;
-	FileParser fileParser("..\\inputD1.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD1.txt");
 	int nb = 0;
 	int nbCalories = 0;
 	Elf elf;
