@@ -30,7 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="2023\InputFiles\inputD1.txt" />
-    <Text Include="2023\InputFiles\inputD1bis.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

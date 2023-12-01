@@ -43,8 +43,5 @@
     <Text Include="2023\InputFiles\inputD1.txt">
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
-    <Text Include="2023\InputFiles\inputD1bis.txt">
-      <Filter>2023\Fichiers de ressources</Filter>
-    </Text>
   </ItemGroup>
 </Project>
