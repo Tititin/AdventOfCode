@@ -5,6 +5,7 @@
 #include <string>
 #include <ios>
 #include <map>
+#include <vector>
 #include <Windows.h>
 
 class FileParser

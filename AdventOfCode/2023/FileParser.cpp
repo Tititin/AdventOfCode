@@ -20,6 +20,9 @@ bool FileParser::openFile(const std::string& fileName)
 {
 	_fileName = fileName;
 	_fileStream.open(_fileName.c_str(), std::fstream::in);
+
+	if (!_fileStream.is_open())
+		std::cerr << "ERROR : FILE " << fileName << " COULDN'T BE OPENED !" << std::endl;
 	
 	return (_fileStream.is_open());
 }
@@ -53,8 +56,8 @@ std::string FileParser::readLineToString()
 {
 	std::string line;
 
-	while (std::getline(_fileStream, line))
-		return (line);
+	std::getline(_fileStream, line);
+
 	return (line);
 }
 
