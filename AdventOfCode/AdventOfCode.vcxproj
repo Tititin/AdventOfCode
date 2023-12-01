@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2023\File.h" />
+    <ClInclude Include="2023\FileParser.h" />
+    <ClInclude Include="2023\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="2023\File.cpp" />
+    <ClCompile Include="2023\FileParser.cpp" />
+    <ClCompile Include="2023\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,16 +136,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="File.h" />
-    <ClInclude Include="FileParser.h" />
-    <ClInclude Include="main.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="File.cpp" />
-    <ClCompile Include="FileParser.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
