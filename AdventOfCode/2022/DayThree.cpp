@@ -53,7 +53,7 @@ int		findAndCalcPriority(const std::string& sOne, const std::string& sTwo, const
 
 void	dayThree(bool isPartTwo)
 {
-	FileParser fileParser("..\\inputD3.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD3.txt");
 	int sumPriority = 0;
 	std::string rucksack;
 

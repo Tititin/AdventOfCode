@@ -68,7 +68,7 @@ std::vector<int> sortDirSizes(std::map<int, int>& dirSizes)
 
 void daySeven(bool isPartTwo)
 {
-	FileParser fileParser("..\\inputD7.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD7.txt");
 	std::string cmdLine;
 	std::string cmd;
 	std::string cmdArg;

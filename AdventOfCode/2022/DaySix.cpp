@@ -21,7 +21,7 @@ bool checkMarkerValidity(const std::list<char>& marker, const int& requiredLengt
 
 void daySix(bool isPartTwo)
 {
-	FileParser fileParser("..\\inputD6.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD6.txt");
 	std::string signal;
 	std::list<char> marker;
 	int requiredLength;

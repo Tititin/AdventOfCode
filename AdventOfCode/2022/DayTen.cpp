@@ -11,7 +11,7 @@ bool isSpriteVisible(int cycle, int spritePos)
 
 void dayTen(bool isPartTwo)
 {
-	FileParser fileParser("..\\inputD10.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD10.txt");
 	int nbCycles = 0;
 	int nbSteps = 0;
 

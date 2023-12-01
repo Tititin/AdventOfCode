@@ -91,7 +91,7 @@ void moveHead(std::list<t_Pos>& visitedPos, t_Pos ropePos[], const std::string& 
 
 void dayNine(bool isPartTwo)
 {
-	FileParser			fileParser("..\\inputD9.txt");
+	FileParser			fileParser("2022\\InputFiles\\inputD9.txt");
 	std::list<t_Pos>	visitedPos;
 	t_Pos				tailPos = { 0, 0 };
 	t_Pos				headPos = { 0, 0 };

@@ -49,7 +49,7 @@ void doMove(std::vector<std::vector<char>>& stacks, const t_moveParams& movePara
 
 void dayFive(bool isPartTwo)
 {
-	FileParser fileParser("..\\inputD5.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD5.txt");
 	std::vector<std::vector<char> > stacks(9);
 	std::map<int, char> edge;
 

@@ -127,40 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DayEight.h" />
-    <ClInclude Include="DayFive.h" />
-    <ClInclude Include="DayFour.h" />
-    <ClInclude Include="DayNine.h" />
-    <ClInclude Include="DayOne.h" />
-    <ClInclude Include="DaySeven.h" />
-    <ClInclude Include="DaySix.h" />
-    <ClInclude Include="DayTen.h" />
-    <ClInclude Include="DayThree.h" />
-    <ClInclude Include="DayTwo.h" />
-    <ClInclude Include="Directory.h" />
-    <ClInclude Include="Elf.h" />
-    <ClInclude Include="File.h" />
-    <ClInclude Include="FileParser.h" />
-    <ClInclude Include="main.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DayEight.cpp" />
-    <ClCompile Include="DayFive.cpp" />
-    <ClCompile Include="DayFour.cpp" />
-    <ClCompile Include="DayNine.cpp" />
-    <ClCompile Include="DayOne.cpp" />
-    <ClCompile Include="DaySeven.cpp" />
-    <ClCompile Include="DaySix.cpp" />
-    <ClCompile Include="DayTen.cpp" />
-    <ClCompile Include="DayThree.cpp" />
-    <ClCompile Include="DayTwo.cpp" />
-    <ClCompile Include="Directory.cpp" />
-    <ClCompile Include="Elf.cpp" />
-    <ClCompile Include="File.cpp" />
-    <ClCompile Include="FileParser.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="..\inputD1.txt" />
     <Text Include="..\inputD10.txt" />
     <Text Include="..\inputD2.txt" />
@@ -174,6 +140,40 @@
     <Text Include="..\inputD9.txt" />
     <Text Include="..\inputD9bis.txt" />
     <Text Include="..\inputD9ter.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2022\DayEight.h" />
+    <ClInclude Include="2022\DayFive.h" />
+    <ClInclude Include="2022\DayFour.h" />
+    <ClInclude Include="2022\DayNine.h" />
+    <ClInclude Include="2022\DayOne.h" />
+    <ClInclude Include="2022\DaySeven.h" />
+    <ClInclude Include="2022\DaySix.h" />
+    <ClInclude Include="2022\DayTen.h" />
+    <ClInclude Include="2022\DayThree.h" />
+    <ClInclude Include="2022\DayTwo.h" />
+    <ClInclude Include="2022\Directory.h" />
+    <ClInclude Include="2022\Elf.h" />
+    <ClInclude Include="2022\File.h" />
+    <ClInclude Include="2022\FileParser.h" />
+    <ClInclude Include="2022\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="2022\DayEight.cpp" />
+    <ClCompile Include="2022\DayFive.cpp" />
+    <ClCompile Include="2022\DayFour.cpp" />
+    <ClCompile Include="2022\DayNine.cpp" />
+    <ClCompile Include="2022\DayOne.cpp" />
+    <ClCompile Include="2022\DaySeven.cpp" />
+    <ClCompile Include="2022\DaySix.cpp" />
+    <ClCompile Include="2022\DayTen.cpp" />
+    <ClCompile Include="2022\DayThree.cpp" />
+    <ClCompile Include="2022\DayTwo.cpp" />
+    <ClCompile Include="2022\Directory.cpp" />
+    <ClCompile Include="2022\Elf.cpp" />
+    <ClCompile Include="2022\File.cpp" />
+    <ClCompile Include="2022\FileParser.cpp" />
+    <ClCompile Include="2022\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

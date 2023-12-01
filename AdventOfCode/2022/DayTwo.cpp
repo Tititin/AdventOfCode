@@ -48,7 +48,7 @@ int		calcScore(const std::string& opponentMove, const std::string& playerMove, b
 
 void	dayTwo()
 {
-	FileParser fileParser("..\\inputD2.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD2.txt");
 	std::string playerMove;
 	std::string opponentMove;
 

@@ -106,7 +106,7 @@ int calcScenicScoreFromBottom(const std::vector<std::vector<t_Tree>>& map, const
 
 void dayEight(bool isPartTwo)
 {
-	FileParser							fileParser("..\\inputD8.txt");
+	FileParser							fileParser("2022\\InputFiles\\inputD8.txt");
 	std::vector<std::vector<t_Tree> >	map;
 	std::vector<t_Tree>					mapLine;
 	std::string							line;

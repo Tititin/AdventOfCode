@@ -36,7 +36,7 @@ bool checkIfPartiallyOverlappingZones(const std::vector<int>& section1, const st
 
 void dayFour(bool isPartTwo)
 {
-	FileParser fileParser("..\\inputD4.txt");
+	FileParser fileParser("2022\\InputFiles\\inputD4.txt");
 	int ret = 0;
 
 	std::string	pairSections;
