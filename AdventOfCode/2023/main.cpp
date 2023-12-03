@@ -2,7 +2,8 @@
 
 int main()
 {
-	dayOne(true);
+	//dayOne(true);
+	//dayTwo(true);
 
 	return (0);
 }

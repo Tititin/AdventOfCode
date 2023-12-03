@@ -72,9 +72,9 @@ int FileParser::readWordToInt()
 
 std::string FileParser::readWordToString()
 {
-	std::string move;
+	std::string word;
 
-	_fileStream >> move;
+	_fileStream >> word;
 
-	return (move);
+	return (word);
 }
