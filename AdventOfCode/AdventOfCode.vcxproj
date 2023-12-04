@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2023\DayFive.h" />
     <ClInclude Include="2023\DayFour.h" />
     <ClInclude Include="2023\DayOne.h" />
     <ClInclude Include="2023\DayThree.h" />
@@ -27,6 +28,7 @@
     <ClInclude Include="2023\main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2023\DayFive.cpp" />
     <ClCompile Include="2023\DayFour.cpp" />
     <ClCompile Include="2023\DayOne.cpp" />
     <ClCompile Include="2023\DayThree.cpp" />

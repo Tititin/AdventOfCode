@@ -36,6 +36,9 @@
     <ClInclude Include="2023\DayFour.h">
       <Filter>2023\Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="2023\DayFive.h">
+      <Filter>2023\Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2023\FileParser.cpp">
@@ -54,6 +57,9 @@
       <Filter>2023\Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="2023\DayFour.cpp">
+      <Filter>2023\Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="2023\DayFive.cpp">
       <Filter>2023\Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
