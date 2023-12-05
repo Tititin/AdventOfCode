@@ -6,6 +6,7 @@ int main()
 	//dayTwo(true);
 	//dayThree();
 	//dayFour();
+	dayFive(true);
 
 	return (0);
 }
