@@ -25,22 +25,14 @@ void convertSeedToSoil(unsigned long long int& _seed, std::vector<t_SoilMap>& _m
 	bool	mapFound = false;
 	int		i = 0;
 
-	//std::cout << "SEED VALUE = " << _seed << std::endl;
 	while (!mapFound && _maps[i].name == "soil" && i < _maps.size())
 	{
 		if (_seed < _maps[i].sourceStart + _maps[i].range && _seed >= _maps[i].sourceStart)
 		{
-			/*std::cout << "||MAP FOUND !" << std::endl;
-			std::cout << "||MAP NAME = " << _maps[i].name << std::endl;
-			std::cout << "||MAP SOURCE = " << _maps[i].sourceStart << std::endl;
-			std::cout << "||MAP DEST = " << _maps[i].destinationStart << std::endl;
-			std::cout << "||MAP RANGE = " << _maps[i].range << std::endl;*/
 			int tmp = _seed - _maps[i].sourceStart;
 			mapFound = true;
 			_seed = _maps[i].destinationStart + tmp;
-			//std::cout << "SOIL VALUE = " << _seed << std::endl;
 		}
-		//std::cout << std::endl;
 		i = i + 1;
 	}
 }
@@ -54,10 +46,8 @@ void convertSoilToFert(unsigned long long int& _soil, std::vector<t_SoilMap>& _m
 		i += 1;
 	while (!mapFound && _maps[i].name == "fertilizer" && i < _maps.size())
 	{
-		//std::cout << "--" << _maps[i].name << std::endl;
 		if (_soil < _maps[i].sourceStart + _maps[i].range && _soil >= _maps[i].sourceStart)
 		{
-			//std::cout << "ABC";
 			int tmp = _soil - _maps[i].sourceStart;
 			mapFound = true;
 			_soil = _maps[i].destinationStart + tmp;
@@ -77,7 +67,6 @@ void convertFertToWater(unsigned long long int& _fert, std::vector<t_SoilMap>& _
 	{
 		if (_fert < _maps[i].sourceStart + _maps[i].range && _fert >= _maps[i].sourceStart)
 		{
-			//std::cout << "DEF";
 			int tmp = _fert - _maps[i].sourceStart;
 			mapFound = true;
 			_fert = _maps[i].destinationStart + tmp;
@@ -97,7 +86,6 @@ void convertWaterToLight(unsigned long long int& _water, std::vector<t_SoilMap>&
 	{
 		if (_water < _maps[i].sourceStart + _maps[i].range && _water >= _maps[i].sourceStart)
 		{
-			//std::cout << "GHI";
 			int tmp = _water - _maps[i].sourceStart;
 			mapFound = true;
 			_water = _maps[i].destinationStart + tmp;
@@ -117,7 +105,6 @@ void convertLightToTemp(unsigned long long int& _light, std::vector<t_SoilMap>& 
 	{
 		if (_light < _maps[i].sourceStart + _maps[i].range && _light >= _maps[i].sourceStart)
 		{
-			//std::cout << "JKL";
 			int tmp = _light - _maps[i].sourceStart;
 			mapFound = true;
 			_light = _maps[i].destinationStart + tmp;
@@ -137,7 +124,6 @@ void convertTempToHumid(unsigned long long int& _temp, std::vector<t_SoilMap>& _
 	{
 		if (_temp < _maps[i].sourceStart + _maps[i].range && _temp >= _maps[i].sourceStart)
 		{
-			//std::cout << "MNO";
 			int tmp = _temp - _maps[i].sourceStart;
 			mapFound = true;
 			_temp = _maps[i].destinationStart + tmp;
@@ -155,10 +141,8 @@ void convertHumidToLocation(unsigned long long int& _humid, std::vector<t_SoilMa
 		i += 1;
 	while (!mapFound && i < _maps.size() && _maps[i].name == "location")
 	{
-		//std::cout << "TRYING A LOCATION MAP" << std::endl;
 		if (_humid < _maps[i].sourceStart + _maps[i].range && _humid >= _maps[i].sourceStart)
 		{
-			//std::cout << "PQR";
 			int tmp = _humid - _maps[i].sourceStart;
 			mapFound = true;
 			_humid = _maps[i].destinationStart + tmp;
@@ -237,7 +221,6 @@ void	dayFive(const bool& isPartTwo)
 
 	while ((word = _fileParser.readWordToString()) != "" || state != END)
 	{
-		//std::cout << word << std::endl;
 		if (word != "map:" && !isNumber(word))
 			updateState(state, word);
 		else if (isNumber(word) && state == SEEDS)
@@ -290,25 +273,12 @@ void	dayFive(const bool& isPartTwo)
 	}
 
 	unsigned long long int finalValue = -1;
-	//DEBUG
-	//std::cout << "SEEDS :";
 	for (int i = 0; i < seeds.size(); i++)
 	{
 		if (finalValue == -1 || finalValue > seeds[i])
 			finalValue = seeds[i];
-		//std::cout << " " << seeds[i];
 	}
 
-	std::cout << finalValue;
-	//std::cout << std::endl << std::endl;
-	//for (int x = 0; x < soilMaps.size(); x++)
-	//{
-	//	std::cout << "==========" << std::endl;
-	//	std::cout << "MAP TYPE = " << soilMaps[x].name << std::endl;
-	//	std::cout << "DESTINATION = " << soilMaps[x].destinationStart << std::endl;
-	//	std::cout << "SOURCE = " << soilMaps[x].sourceStart << std::endl;
-	//	std::cout << "RANGE = " << soilMaps[x].range << std::endl;
-	//}
-	std::cout << std::endl;
+	std::cout << finalValue << std::endl;
 
 }
