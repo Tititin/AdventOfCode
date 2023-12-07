@@ -78,3 +78,13 @@ std::string FileParser::readWordToString()
 
 	return (word);
 }
+
+bool FileParser::checkIsNumber(const std::string& _word)
+{
+	for (int i = 0; i < _word.size(); i++)
+	{
+		if (_word[i] < '0' || _word[i] > '9')
+			return false;
+	}
+	return true;
+}

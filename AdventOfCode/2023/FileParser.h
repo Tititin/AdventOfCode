@@ -28,5 +28,7 @@ public:
 
 	int			readWordToInt();
 	std::string readWordToString();
+
+	static bool	checkIsNumber(const std::string& _word);
 };
 
