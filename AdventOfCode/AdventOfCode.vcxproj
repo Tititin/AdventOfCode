@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2023\DayEight.h" />
     <ClInclude Include="2023\DayFive.h" />
     <ClInclude Include="2023\DayFour.h" />
     <ClInclude Include="2023\DayOne.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="2023\main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2023\DayEight.cpp" />
     <ClCompile Include="2023\DayFive.cpp" />
     <ClCompile Include="2023\DayFour.cpp" />
     <ClCompile Include="2023\DayOne.cpp" />
@@ -48,6 +50,7 @@
     <Text Include="2023\InputFiles\inputD5.txt" />
     <Text Include="2023\InputFiles\inputD6.txt" />
     <Text Include="2023\InputFiles\inputD7.txt" />
+    <Text Include="2023\InputFiles\inputD8.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
