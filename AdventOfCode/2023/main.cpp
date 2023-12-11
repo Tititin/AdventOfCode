@@ -10,6 +10,9 @@ int main()
 	//daySix();
 	//daySeven();
 	//dayEight();
+	//dayNine(); // NOT FUNCTIONAL YET
+	//dayTen(true); // PART 2 NOT FUNCTIONAL
+	//dayEleven(true);
 
 	return (0);
 }

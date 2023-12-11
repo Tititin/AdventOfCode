@@ -20,11 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2023\DayEight.h" />
+    <ClInclude Include="2023\DayEleven.h" />
     <ClInclude Include="2023\DayFive.h" />
     <ClInclude Include="2023\DayFour.h" />
+    <ClInclude Include="2023\DayNine.h" />
     <ClInclude Include="2023\DayOne.h" />
     <ClInclude Include="2023\DaySeven.h" />
     <ClInclude Include="2023\DaySix.h" />
+    <ClInclude Include="2023\DayTen.h" />
     <ClInclude Include="2023\DayThree.h" />
     <ClInclude Include="2023\DayTwo.h" />
     <ClInclude Include="2023\FileParser.h" />
@@ -32,11 +35,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2023\DayEight.cpp" />
+    <ClCompile Include="2023\DayEleven.cpp" />
     <ClCompile Include="2023\DayFive.cpp" />
     <ClCompile Include="2023\DayFour.cpp" />
+    <ClCompile Include="2023\DayNine.cpp" />
     <ClCompile Include="2023\DayOne.cpp" />
     <ClCompile Include="2023\DaySeven.cpp" />
     <ClCompile Include="2023\DaySix.cpp" />
+    <ClCompile Include="2023\DayTen.cpp" />
     <ClCompile Include="2023\DayThree.cpp" />
     <ClCompile Include="2023\DayTwo.cpp" />
     <ClCompile Include="2023\FileParser.cpp" />
@@ -44,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="2023\InputFiles\inputD1.txt" />
+    <Text Include="2023\InputFiles\inputD10.txt" />
+    <Text Include="2023\InputFiles\inputD11.txt" />
     <Text Include="2023\InputFiles\inputD2.txt" />
     <Text Include="2023\InputFiles\inputD3.txt" />
     <Text Include="2023\InputFiles\inputD4.txt" />
@@ -51,6 +59,7 @@
     <Text Include="2023\InputFiles\inputD6.txt" />
     <Text Include="2023\InputFiles\inputD7.txt" />
     <Text Include="2023\InputFiles\inputD8.txt" />
+    <Text Include="2023\InputFiles\inputD9.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
