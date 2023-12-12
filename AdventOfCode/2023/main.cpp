@@ -2,17 +2,17 @@
 
 int main()
 {
-	//dayOne(true);
-	//dayTwo(true);
+	//dayOne();
+	//dayTwo();
 	//dayThree();
 	//dayFour();
 	//dayFive();
 	//daySix();
 	//daySeven();
 	//dayEight();
-	//dayNine(); // NOT FUNCTIONAL YET
+	//dayNine();
 	//dayTen(true); // PART 2 NOT FUNCTIONAL
-	//dayEleven(true);
+	//dayEleven();
 
 	return (0);
 }
