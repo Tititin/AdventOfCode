@@ -78,7 +78,7 @@ void rollWest(std::vector<std::string>& _rockMap)
 
 void dayFourteen(const bool& isPartTwo)
 {
-	FileParser	_fileParser("2023\\InputFiles\\inputD14.txt");
+	FileParser	_fileParser("2023\\InputFiles\\inputD14bis.txt");
 	std::string	line;
 
 	std::vector<std::string>	rockMap;
