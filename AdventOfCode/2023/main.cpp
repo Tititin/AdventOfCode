@@ -11,12 +11,18 @@ int main()
 	//daySeven();
 	//dayEight();
 	//dayNine();
-	//dayTen(true); // PART 2 NOT FUNCTIONAL
+	//dayTen();
 	//dayEleven();
 
 
 	//dayFourteen();
 	//dayFifteen();
+
+
+	//dayEighteen();
+
+
+	//dayTwentyOne();
 
 	return (0);
 }

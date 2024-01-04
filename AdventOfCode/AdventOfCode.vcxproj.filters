@@ -66,6 +66,12 @@
     <ClInclude Include="2023\DayFifteen.h">
       <Filter>2023\Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="2023\DayEighteen.h">
+      <Filter>2023\Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="2023\DayTwentyOne.h">
+      <Filter>2023\Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2023\FileParser.cpp">
@@ -116,6 +122,12 @@
     <ClCompile Include="2023\DayFifteen.cpp">
       <Filter>2023\Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="2023\DayEighteen.cpp">
+      <Filter>2023\Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="2023\DayTwentyOne.cpp">
+      <Filter>2023\Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="2023\InputFiles\inputD1.txt">
@@ -156,6 +168,12 @@
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
     <Text Include="2023\InputFiles\inputD15.txt">
+      <Filter>2023\Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="2023\InputFiles\inputD18.txt">
+      <Filter>2023\Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="2023\InputFiles\inputD21.txt">
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>

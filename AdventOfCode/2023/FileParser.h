@@ -8,6 +8,21 @@
 #include <vector>
 #include <Windows.h>
 
+typedef enum	e_Direction
+{
+	NONE = 0,
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+}				t_Direction;
+
+typedef struct	s_Pos
+{
+	int			x = 0;
+	int			y = 0;
+}				t_Pos;
+
 class FileParser
 {
 public:

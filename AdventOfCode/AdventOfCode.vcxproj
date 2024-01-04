@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2023\DayEight.h" />
+    <ClInclude Include="2023\DayEighteen.h" />
     <ClInclude Include="2023\DayEleven.h" />
     <ClInclude Include="2023\DayFifteen.h" />
     <ClInclude Include="2023\DayFive.h" />
@@ -32,12 +33,14 @@
     <ClInclude Include="2023\DayTen.h" />
     <ClInclude Include="2023\DayThree.h" />
     <ClInclude Include="2023\DayTwelve.h" />
+    <ClInclude Include="2023\DayTwentyOne.h" />
     <ClInclude Include="2023\DayTwo.h" />
     <ClInclude Include="2023\FileParser.h" />
     <ClInclude Include="2023\main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2023\DayEight.cpp" />
+    <ClCompile Include="2023\DayEighteen.cpp" />
     <ClCompile Include="2023\DayEleven.cpp" />
     <ClCompile Include="2023\DayFifteen.cpp" />
     <ClCompile Include="2023\DayFive.cpp" />
@@ -50,6 +53,7 @@
     <ClCompile Include="2023\DayTen.cpp" />
     <ClCompile Include="2023\DayThree.cpp" />
     <ClCompile Include="2023\DayTwelve.cpp" />
+    <ClCompile Include="2023\DayTwentyOne.cpp" />
     <ClCompile Include="2023\DayTwo.cpp" />
     <ClCompile Include="2023\FileParser.cpp" />
     <ClCompile Include="2023\main.cpp" />
@@ -61,7 +65,9 @@
     <Text Include="2023\InputFiles\inputD12.txt" />
     <Text Include="2023\InputFiles\inputD14.txt" />
     <Text Include="2023\InputFiles\inputD15.txt" />
+    <Text Include="2023\InputFiles\inputD18.txt" />
     <Text Include="2023\InputFiles\inputD2.txt" />
+    <Text Include="2023\InputFiles\inputD21.txt" />
     <Text Include="2023\InputFiles\inputD3.txt" />
     <Text Include="2023\InputFiles\inputD4.txt" />
     <Text Include="2023\InputFiles\inputD5.txt" />
