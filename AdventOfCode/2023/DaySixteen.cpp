@@ -1,5 +1,19 @@
 #include "DaySixteen.h"
 
+void prepareNewRun(std::vector<std::string>& energizedMap, std::vector<t_Pos>& laserPos, std::vector<t_Direction>& laserDirections, std::vector<bool>& laserRunning, std::vector<t_Pos>& usedDividers, unsigned int& finalValue)
+{
+	for (int y = 0; y < energizedMap.size(); y++)
+	{
+		for (int x = 0; x < energizedMap[y].size(); x++)
+			energizedMap[y][x] = '.';
+	}
+	laserPos.clear();
+	laserDirections.clear();
+	laserRunning.clear();
+	usedDividers.clear();
+	finalValue = 0;
+}
+
 bool checkIfDirectionIsHorizontal(const t_Direction& _direction)
 {
 	return (_direction == RIGHT || _direction == LEFT);
@@ -63,33 +77,8 @@ bool checkAtLeastOneLaserIsRunning(const std::vector<bool>& _laserRunning)
 	return false;
 }
 
-void daySixteen(const bool& isPartTwo)
+void energizeMap(std::vector<std::string>& laserMap, std::vector<std::string>& energizedMap, std::vector<t_Pos>& laserPos, std::vector<t_Direction>& laserDirections, std::vector<bool>& laserRunning, std::vector<t_Pos>& usedDividers, unsigned int& finalValue)
 {
-	FileParser					_fileParser("2023\\InputFiles\\inputD16.txt");
-	std::string					line;
-
-	t_Pos						pos = t_Pos{ 0, 0 };
-	std::vector<t_Pos>			laserPos;
-	std::vector<t_Direction>	laserDirections;
-	std::vector<bool>			laserRunning;
-
-	std::vector<t_Pos>			usedDividers;
-
-	std::vector<std::string>	laserMap;
-	std::vector<std::string>	energizedMap;
-
-	unsigned int				finalValue = 0;
-
-	while ((line = _fileParser.readLineToString()) != "")
-	{
-		laserMap.push_back(line);
-		energizedMap.push_back(line);
-	}
-
-	laserPos.push_back(pos);
-	laserDirections.push_back(RIGHT);
-	laserRunning.push_back(true);
-
 	while (checkAtLeastOneLaserIsRunning(laserRunning))
 	{
 		for (int i = 0; i < laserPos.size(); i++)
@@ -171,17 +160,109 @@ void daySixteen(const bool& isPartTwo)
 			}
 		}
 	}
+}
 
-	for (int y = 0; y < energizedMap.size(); y++)
+void daySixteen(const bool& isPartTwo)
+{
+	FileParser					_fileParser("2023\\InputFiles\\inputD16.txt");
+	std::string					line;
+
+	t_Pos						pos = t_Pos{ 0, 0 };
+	t_Direction					startDirection = RIGHT;
+
+	std::vector<t_Pos>			laserPos;
+	std::vector<t_Direction>	laserDirections;
+	std::vector<bool>			laserRunning;
+
+	std::vector<t_Pos>			usedDividers;
+
+	std::vector<std::string>	laserMap;
+	std::vector<std::string>	energizedMap;
+
+	std::vector<unsigned int>	finalValues;
+	unsigned int				finalValue = 0;
+
+	while ((line = _fileParser.readLineToString()) != "")
 	{
-		for (int x = 0; x < energizedMap[y].size(); x++)
+		laserMap.push_back(line);
+		energizedMap.push_back(line);
+	}
+	if (!isPartTwo)
+	{
+		laserPos.push_back(pos);
+		laserDirections.push_back(RIGHT);
+		laserRunning.push_back(true);
+
+		energizeMap(laserMap, energizedMap, laserPos, laserDirections, laserRunning, usedDividers, finalValue);
+	}
+	else
+	{
+		while (pos.x >= 0 || startDirection != DOWN) // While all border tiles hasn't been processed
 		{
-			if (energizedMap[y][x] == '#')
-				std::cout << "#";
-			else
-				std::cout << ".";
+			laserPos.push_back(pos);
+			laserDirections.push_back(startDirection);
+			laserRunning.push_back(true);
+
+			energizeMap(laserMap, energizedMap, laserPos, laserDirections, laserRunning, usedDividers, finalValue);
+			finalValues.push_back(finalValue);
+
+			prepareNewRun(energizedMap, laserPos, laserDirections, laserRunning, usedDividers, finalValue);
+
+			switch (startDirection)
+			{
+			case RIGHT:
+				pos.y += 1;
+				break;
+			case UP:
+				pos.x += 1;
+				break;
+			case LEFT:
+				pos.y -= 1;
+				break;
+			case DOWN:
+				pos.x -= 1;
+				break;
+			}
+
+			if (pos.x == laserMap[0].size())
+			{
+				pos.x -= 1;
+				startDirection = LEFT;
+			}
+			else if (pos.y == laserMap.size())
+			{
+				pos.y -= 1;
+				startDirection = UP;
+			}
+			else if (pos.y == -1)
+			{
+				pos.y += 1;
+				startDirection = DOWN;
+			}
 		}
-		std::cout << std::endl;
+	}
+
+	if (!isPartTwo)
+	{
+		for (int y = 0; y < energizedMap.size(); y++)
+		{
+			for (int x = 0; x < energizedMap[y].size(); x++)
+			{
+				if (energizedMap[y][x] == '#')
+					std::cout << "#";
+				else
+					std::cout << ".";
+			}
+			std::cout << std::endl;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < finalValues.size(); i++)
+		{
+			if (finalValue < finalValues[i])
+				finalValue = finalValues[i];
+		}
 	}
 
 	std::cout << "FINAL VALUE = " << finalValue << std::endl;
