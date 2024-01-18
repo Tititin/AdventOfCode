@@ -19,8 +19,8 @@ typedef enum	e_Direction
 
 typedef struct	s_Pos
 {
-	int			x = 0;
-	int			y = 0;
+	long long int			x = 0;
+	long long int			y = 0;
 }				t_Pos;
 
 class FileParser
