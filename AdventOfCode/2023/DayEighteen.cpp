@@ -171,27 +171,13 @@ void dayEighteen(const bool& isPartTwo)
 				unsigned long long int nbDec = convertHexToDec(lengthHex);
 
 				if (word[7] == '0')
-				{
 					direction = RIGHT;
-					std::cout << "R ";
-				}
 				else if (word[7] == '1')
-				{
 					direction = DOWN;
-					std::cout << "D ";
-				}
 				else if (word[7] == '2')
-				{
 					direction = LEFT;
-					std::cout << "L ";
-				}
 				else
-				{
 					direction = UP;
-					std::cout << "U ";
-				}
-
-				std::cout << nbDec << std::endl;
 
 				while (nbDec != 0)
 				{
@@ -320,8 +306,6 @@ void dayEighteen(const bool& isPartTwo)
 
 		for (int i = 0; i < digMap.size(); i++)
 			std::cout << digMap[i] << std::endl;
-
-		std::cout << "PERMIETER = " << diggerTiles.size() << std::endl;
 	}
 	else
 	{
