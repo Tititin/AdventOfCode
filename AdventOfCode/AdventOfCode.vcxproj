@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2015\FileParser.h" />
     <ClInclude Include="2015\main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2015\FileParser.cpp" />
     <ClCompile Include="2015\main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
