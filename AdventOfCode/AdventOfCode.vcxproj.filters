@@ -175,7 +175,6 @@
     <Text Include="2023\InputFiles\inputD11.txt">
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
-    <Text Include="2023\InputFiles\inputD12.txt" />
     <Text Include="2023\InputFiles\inputD14.txt">
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
@@ -192,6 +191,9 @@
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
     <Text Include="2023\InputFiles\inputD13.txt">
+      <Filter>2023\Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="2023\InputFiles\inputD12.txt">
       <Filter>2023\Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>
