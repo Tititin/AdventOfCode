@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="2015\FileParser.cpp" />
+    <ClCompile Include="2015\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2015\FileParser.h" />
+    <ClInclude Include="2015\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Input Files">
+      <UniqueIdentifier>{05b95828-9e3c-472d-95dd-44488db091ef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="2015\InputFiles\inputD1.txt">
+      <Filter>Input Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

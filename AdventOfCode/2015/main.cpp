@@ -2,5 +2,7 @@
 
 int main()
 {
+	dayOne();
+
 	return 0;
 }

@@ -370,5 +370,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /AdventOfCode.sln
-/AdventOfCode/AdventOfCode.vcxproj
-/AdventOfCode/AdventOfCode.vcxproj.filters
+#/AdventOfCode/AdventOfCode.vcxproj
+#/AdventOfCode/AdventOfCode.vcxproj.filters
