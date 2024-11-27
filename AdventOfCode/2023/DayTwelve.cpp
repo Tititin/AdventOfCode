@@ -5,7 +5,7 @@ static unsigned long long int partTwoDebug = 0;
 
 void dayTwelve(const bool& isPartTwo)
 {
-	FileParser	_fileParser("2023\\InputFiles\\inputD12ter.txt");
+	FileParser	_fileParser("2023\\InputFiles\\inputD12.txt");
 	std::string	word;
 
 	std::vector<std::string>	springsMap;
