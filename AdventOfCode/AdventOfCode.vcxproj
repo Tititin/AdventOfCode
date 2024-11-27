@@ -36,6 +36,7 @@
     <ClInclude Include="2023\DayThree.h" />
     <ClInclude Include="2023\DayTwelve.h" />
     <ClInclude Include="2023\DayTwentyOne.h" />
+    <ClInclude Include="2023\DayTwentyTwo.h" />
     <ClInclude Include="2023\DayTwo.h" />
     <ClInclude Include="2023\FileParser.h" />
     <ClInclude Include="2023\main.h" />
@@ -58,6 +59,7 @@
     <ClCompile Include="2023\DayThree.cpp" />
     <ClCompile Include="2023\DayTwelve.cpp" />
     <ClCompile Include="2023\DayTwentyOne.cpp" />
+    <ClCompile Include="2023\DayTwentyTwo.cpp" />
     <ClCompile Include="2023\DayTwo.cpp" />
     <ClCompile Include="2023\FileParser.cpp" />
     <ClCompile Include="2023\main.cpp" />

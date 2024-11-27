@@ -78,6 +78,9 @@
     <ClInclude Include="2023\DayThirteen.h">
       <Filter>2023\Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="2023\DayTwentyTwo.h">
+      <Filter>2023\Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2023\FileParser.cpp">
@@ -138,6 +141,9 @@
       <Filter>2023\Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="2023\DayThirteen.cpp">
+      <Filter>2023\Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="2023\DayTwentyTwo.cpp">
       <Filter>2023\Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
