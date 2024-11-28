@@ -20,16 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2015\DayOne.h" />
+    <ClInclude Include="2015\DayTwo.h" />
     <ClInclude Include="2015\FileParser.h" />
     <ClInclude Include="2015\main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2015\DayOne.cpp" />
+    <ClCompile Include="2015\DayTwo.cpp" />
     <ClCompile Include="2015\FileParser.cpp" />
     <ClCompile Include="2015\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="2015\InputFiles\inputD1.txt" />
+    <Text Include="2015\InputFiles\inputD2.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
