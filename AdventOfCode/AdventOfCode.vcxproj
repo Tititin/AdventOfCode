@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2015\DayFive.h" />
     <ClInclude Include="2015\DayOne.h" />
     <ClInclude Include="2015\DayThree.h" />
     <ClInclude Include="2015\DayTwo.h" />
@@ -26,6 +27,7 @@
     <ClInclude Include="2015\main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2015\DayFive.cpp" />
     <ClCompile Include="2015\DayOne.cpp" />
     <ClCompile Include="2015\DayThree.cpp" />
     <ClCompile Include="2015\DayTwo.cpp" />
@@ -35,6 +37,8 @@
   <ItemGroup>
     <Text Include="2015\InputFiles\inputD1.txt" />
     <Text Include="2015\InputFiles\inputD2.txt" />
+    <Text Include="2015\InputFiles\inputD3.txt" />
+    <Text Include="2015\InputFiles\inputD5.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

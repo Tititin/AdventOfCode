@@ -5,12 +5,14 @@
     <ClCompile Include="2015\main.cpp" />
     <ClCompile Include="2015\DayTwo.cpp" />
     <ClCompile Include="2015\DayThree.cpp" />
+    <ClCompile Include="2015\DayFive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2015\FileParser.h" />
     <ClInclude Include="2015\main.h" />
     <ClInclude Include="2015\DayTwo.h" />
     <ClInclude Include="2015\DayThree.h" />
+    <ClInclude Include="2015\DayFive.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Input Files">
@@ -22,6 +24,12 @@
       <Filter>Input Files</Filter>
     </Text>
     <Text Include="2015\InputFiles\inputD2.txt">
+      <Filter>Input Files</Filter>
+    </Text>
+    <Text Include="2015\InputFiles\inputD3.txt">
+      <Filter>Input Files</Filter>
+    </Text>
+    <Text Include="2015\InputFiles\inputD5.txt">
       <Filter>Input Files</Filter>
     </Text>
   </ItemGroup>
