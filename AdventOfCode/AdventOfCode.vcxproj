@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2016\DayOne.h" />
+    <ClInclude Include="2016\FileParser.h" />
+    <ClInclude Include="2016\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="2016\DayOne.cpp" />
+    <ClCompile Include="2016\FileParser.cpp" />
+    <ClCompile Include="2016\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

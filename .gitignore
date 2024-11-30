@@ -13,6 +13,14 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Input files
+*bis.txt
+*ter.txt
+*quar.txt
+*fifth.txt
+*debug.txt
+logD*.txt
+
 # Mono auto generated files
 mono_crash.*
 
