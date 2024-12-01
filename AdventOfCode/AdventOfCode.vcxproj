@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024\DayOne.h" />
+    <ClInclude Include="2024\DayTwo.h" />
     <ClInclude Include="2024\FileParser.h" />
     <ClInclude Include="2024\main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2024\DayOne.cpp" />
+    <ClCompile Include="2024\DayTwo.cpp" />
     <ClCompile Include="2024\FileParser.cpp" />
     <ClCompile Include="2024\main.cpp" />
   </ItemGroup>
