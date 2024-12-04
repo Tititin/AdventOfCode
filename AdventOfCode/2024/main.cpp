@@ -3,7 +3,9 @@
 int main()
 {
 	//dayOne();
-	dayTwo(true);
+	//dayTwo();
+	//dayThree(); //NOT FUNCTIONAL
+	dayFour(true);
 
 	return (0);
 }
