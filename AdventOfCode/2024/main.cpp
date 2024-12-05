@@ -4,7 +4,7 @@ int main()
 {
 	//dayOne();
 	//dayTwo();
-	//dayThree(); //NOT FUNCTIONAL
+	//dayThree(true); //PART ONE OK BUT PART TWO NOT YET
 	//dayFour();
 
 	return (0);

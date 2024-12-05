@@ -5,7 +5,14 @@
 
 #include "FileParser.h"
 
-bool	checkIfMulExpression(int pos, const std::string& str);
+typedef struct	s_SafeZones
+{
+	std::size_t	start;
+	std::size_t end;
+}				t_SafeZones;
+
+bool		checkIfInSafeZone(const size_t& pos, const std::vector<t_SafeZones>& safeZones);
+std::string	checkIfMulExpression(int pos, const std::string& str);
 
 unsigned long int	verifyAndMultiply(const std::string& _s);
 

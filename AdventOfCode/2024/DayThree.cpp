@@ -1,16 +1,79 @@
 #include "DayThree.h"
 
-bool checkIfMulExpression(int pos, const std::string& str)
+bool checkIfInSafeZone(const size_t& pos, const std::vector<t_SafeZones>& safeZones)
 {
-	bool	isMul = true;
-	std::string	pattern = "mul(";
+	bool	safeZoneFound = false;
 
-	for (int i = 0; i < str.size() && isMul; i++)
+	for (int i = 0; i < safeZones.size() && !safeZoneFound; i++)
 	{
-		continue;
+		if (pos > safeZones[i].start && pos < safeZones[i].end)
+			safeZoneFound = true;
 	}
 
-	return false;
+	return safeZoneFound;
+}
+
+std::string checkIfMulExpression(int pos, const std::string& str)
+{
+	bool	isMul = true;
+	bool	isExpressionCorrect = false;
+	bool	firstNumberFound = false;
+	bool	commaFound = false;
+	bool	secondNumberFound = false;
+	bool	closingParenthesisFound = false;
+
+	std::size_t	expressionLength = 0;
+	//std::string	pattern = "mul(";
+
+	//std::cout << "ANALYZING MATCH AT POS -> " << pos << std::endl;
+	//std::cout << str.substr(pos, 4);
+
+	for (int i = pos + 4; i < str.size() && isMul && !isExpressionCorrect; i++)
+	{
+		//std::cout << str[i];
+		if (!firstNumberFound && (str[i] < '0' || str[i] > '9') && str[i] != ',')
+		{
+			//std::cout << std::endl;
+			//std::cout << "Error on first number" << std::endl;
+			isMul = false;
+		}
+		else if (!firstNumberFound && str[i] == ',')
+		{
+			firstNumberFound = true;
+			commaFound = true;
+		}
+		else if (commaFound && str[i] == ',')
+		{
+			//std::cout << std::endl;
+			//std::cout << "Double-comma error" << std::endl;
+			isMul = false;
+		}
+		else if (firstNumberFound && commaFound && !secondNumberFound && (str[i] < '0' || str[i] > '9') && str[i] != ')')
+		{
+			/*std::cout << std::endl;
+			std::cout << "Error on second number" << std::endl;*/
+			isMul = false;
+		}
+		else if (firstNumberFound && commaFound && !secondNumberFound && str[i] == ')')
+		{
+			secondNumberFound = true;
+			closingParenthesisFound = true;
+			isExpressionCorrect = true;
+			expressionLength = i - pos;
+		}
+		//else
+		//{
+		//	std::cout << std::endl;
+		//	std::cout << "Wrong expression" << std::endl;
+		//	isMul = false;
+		//}
+		//continue;
+	}
+
+	if (isMul && isExpressionCorrect)
+		return (str.substr(pos, expressionLength + 1));
+
+	return std::string("ERROR");
 }
 
 unsigned long int verifyAndMultiply(const std::string& _s)
@@ -57,11 +120,11 @@ unsigned long int verifyAndMultiply(const std::string& _s)
 		else
 			return (1);
 	}
-	std::cout << "==========" << std::endl;
+	/*std::cout << "==========" << std::endl;
 	std::cout << "Match : " << _s << std::endl;
 	std::cout << "Numbers to multiply : " << nbA << " * " << nbB << std::endl;
 	std::cout << "Result = " << nbA * nbB << std::endl;
-	std::cout << "==========" << std::endl << std::endl;
+	std::cout << "==========" << std::endl << std::endl;*/
 
 	return nbA * nbB;
 }
@@ -72,49 +135,95 @@ void dayThree(const bool& isPartTwo)
 	std::string	line;
 	unsigned long long int	finalValue = 0;
 
-	std::regex regex_pattern(R"(mul\(([^a-zA-Z,]+),([^a-zA-Z,]+)\))");
+	//std::regex regex_pattern(R"(mul\(([^a-zA-Z,]+),([^a-zA-Z,]+)\))");
 
-	int		i = 0;
+	/*int		i = 0;*/
 
-	std::vector<std::string>	lines;
-
-	while ((line = _file.readLineToString()) != "")
-	{
-		std::string testLine = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
-
-		std::vector<std::string> matches;
-
-		// Utilisation de std::sregex_iterator pour parcourir les occurrences
-		auto begin = std::sregex_iterator(line.begin(), line.end(), regex_pattern);
-		auto end = std::sregex_iterator();
-
-		for (auto it = begin; it != end; ++it)
-		{
-			//std::cout << "Full match : " << it->str() << std::endl;
-			matches.push_back(it->str()); // Ajout de la correspondance au vecteur
-		}
-
-		for (int x = 0; x < matches.size(); x++)
-		{
-			//std::cout << matches[x] << std::endl;
-			finalValue += verifyAndMultiply(matches[x]);
-		}
-		//std::cout << "FINAL VALUE = " << finalValue << std::endl;
-	}
+	/*std::vector<std::string>	lines;*/
 
 	//while ((line = _file.readLineToString()) != "")
 	//{
-	//	std::regex_search("mul(20,20)", m, std::regex(re));
+	//	//std::string testLine = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
 
-	//	for (int i = 0; i < m.size(); i++)
-	//	{
-	//		//finalValue = finalValue;
-	//		std::cout << "Match " << i << ": " << m[i] << std::endl;
-	//		finalValue += verifyAndMultiply(m[i]);
-	//	}
+	//	//std::vector<std::string> matches;
+
+	//	// Utilisation de std::sregex_iterator pour parcourir les occurrences
+	//	//auto begin = std::sregex_iterator(line.begin(), line.end(), regex_pattern);
+	//	//auto end = std::sregex_iterator();
+
+	//	//for (auto it = begin; it != end; ++it)
+	//	//{
+	//	//	//std::cout << "Full match : " << it->str() << std::endl;
+	//	//	matches.push_back(it->str()); // Ajout de la correspondance au vecteur
+	//	//}
+
+	//	//for (int x = 0; x < matches.size(); x++)
+	//	//{
+	//	//	//std::cout << matches[x] << std::endl;
+	//	//	finalValue += verifyAndMultiply(matches[x]);
+	//	//}
+	//	//std::cout << "FINAL VALUE = " << finalValue << std::endl;
 	//}
 
-	//finalValue = verifyAndMultiply("mul(20,20)");
+	std::size_t matchPos = 0;
+	std::size_t doMatchPos = 0;
+	std::size_t dontMatchPos = 0;
+
+	bool		isMulActivated = true;
+
+	std::vector<t_SafeZones>	safeZones;
+	std::vector<std::size_t>			doTriggers;
+	std::vector<std::size_t>			dontTriggers;
+
+	doTriggers.push_back(0);
+
+	while ((line = _file.readLineToString()) != "")
+	{
+		while ((doMatchPos = line.find("do()", doMatchPos)) != std::string::npos)
+		{
+			doTriggers.push_back(doMatchPos);
+			doMatchPos += 1;
+		}
+		while ((dontMatchPos = line.find("don't()", dontMatchPos)) != std::string::npos)
+		{
+			dontTriggers.push_back(dontMatchPos);
+			dontMatchPos += 1;
+		}
+
+		std::cout << "START OF SAFE ZONES" << std::endl;
+		for (int i = 0; i < doTriggers.size(); i++)
+			std::cout << doTriggers[i] << " ";
+		std::cout << std::endl;
+		std::cout << "END OF SAFE ZONES" << std::endl;
+		for (int i = 0; i < dontTriggers.size(); i++)
+			std::cout << dontTriggers[i] << " ";
+		std::cout << std::endl << std::endl;
+
+		for (int i = 0; i < doTriggers.size() && i < dontTriggers.size(); i++)
+			safeZones.push_back(t_SafeZones{ doTriggers[i], dontTriggers[i] });
+		if (doTriggers.size() > dontTriggers.size())
+			safeZones.push_back(t_SafeZones{ doTriggers.size() - 1, std::string::npos });
+		else if (dontTriggers.size() > doTriggers.size())
+			safeZones.push_back(t_SafeZones{ std::string::npos, dontTriggers.size() - 1 });
+
+		while ((matchPos = line.find("mul(", matchPos)) != std::string::npos)
+		{
+			std::string	potentialMatch = checkIfMulExpression(matchPos, line);
+
+			//std::cout << "Match : " << potentialMatch << std::endl;
+
+			if (potentialMatch != "ERROR" && checkIfInSafeZone(matchPos, safeZones))
+				finalValue += verifyAndMultiply(potentialMatch);
+
+			matchPos += 1;
+		}
+		matchPos = 0;
+		doMatchPos = 0;
+		dontMatchPos = 0;
+		safeZones.clear();
+		doTriggers.clear();
+		dontTriggers.clear();
+	}
 
 	std::cout << "FINAL VALUE = " << finalValue << std::endl;
 }
