@@ -6,7 +6,8 @@ int main()
 	//dayTwo();
 	//dayThree(true); //PART ONE OK BUT PART TWO NOT YET
 	//dayFour();
-	dayFive(true);
+	//dayFive(true); // PART ONE OK BUT PART TWO NOT YET
+	//daySix(true); // PART ON OK BUT PART TWO NOT YET
 
 	return (0);
 }
