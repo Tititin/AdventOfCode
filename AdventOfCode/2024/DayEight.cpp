@@ -64,6 +64,8 @@ void dayEight(const bool& isPartTwo)
 					antennaPos.insert(std::pair<char, std::vector<t_Pos>>(line[i], tmp));
 					tmp.clear();
 				}
+				if (isPartTwo)
+					antinodesPositionsVector.push_back(t_Pos{ i, currentPos.y });
 			}
 		}
 		currentPos.y += 1;
@@ -82,25 +84,55 @@ void dayEight(const bool& isPartTwo)
 				antinodePos.x = tmp[j].x - tmp[i].x;
 				antinodePos.y = tmp[j].y - tmp[i].y;
 
-				t_Pos	antinodeTwo = tmp[i] - antinodePos;
-				t_Pos	antinodeThree = tmp[j] + antinodePos;
-
-				if (antinodeTwo.x >= 0 && antinodeTwo.x < antennaMap[0].size()
-					&& antinodeTwo.y >= 0 && antinodeTwo.y < antennaMap.size())
+				if (!isPartTwo)
 				{
-					if (isAntinodeUnique(antinodeTwo, antinodesPositionsVector))
+
+					t_Pos	antinodeTwo = tmp[i] - antinodePos;
+					t_Pos	antinodeThree = tmp[j] + antinodePos;
+
+					if (antinodeTwo.x >= 0 && antinodeTwo.x < antennaMap[0].size()
+						&& antinodeTwo.y >= 0 && antinodeTwo.y < antennaMap.size())
 					{
-						antinodesPositionsVector.push_back(antinodeTwo);
-						antinodesMap[antinodeTwo.y][antinodeTwo.x] = '#';
+						if (isAntinodeUnique(antinodeTwo, antinodesPositionsVector))
+						{
+							antinodesPositionsVector.push_back(antinodeTwo);
+							antinodesMap[antinodeTwo.y][antinodeTwo.x] = '#';
+						}
+					}
+					if (antinodeThree.x >= 0 && antinodeThree.x < antennaMap[0].size()
+						&& antinodeThree.y >= 0 && antinodeThree.y < antennaMap.size())
+					{
+						if (isAntinodeUnique(antinodeThree, antinodesPositionsVector))
+						{
+							antinodesPositionsVector.push_back(antinodeThree);
+							antinodesMap[antinodeThree.y][antinodeThree.x] = '#';
+						}
 					}
 				}
-				if (antinodeThree.x >= 0 && antinodeThree.x < antennaMap[0].size()
-					&& antinodeThree.y >= 0 && antinodeThree.y < antennaMap.size())
+				else
 				{
-					if (isAntinodeUnique(antinodeThree, antinodesPositionsVector))
+					t_Pos	antinodeOne = tmp[i] - antinodePos;
+					t_Pos	antinodeTwo = tmp[j] + antinodePos;
+
+					while (antinodeOne.x >= 0 && antinodeOne.x < antennaMap[0].size()
+						&& antinodeOne.y >= 0 && antinodeOne.y < antennaMap.size())
 					{
-						antinodesPositionsVector.push_back(antinodeThree);
-						antinodesMap[antinodeThree.y][antinodeThree.x] = '#';
+						if (isAntinodeUnique(antinodeOne, antinodesPositionsVector))
+						{
+							antinodesPositionsVector.push_back(antinodeOne);
+							antinodesMap[antinodeOne.y][antinodeOne.x] = '#';
+						}
+						antinodeOne = antinodeOne - antinodePos;
+					}
+					while (antinodeTwo.x >= 0 && antinodeTwo.x < antennaMap[0].size()
+						&& antinodeTwo.y >= 0 && antinodeTwo.y < antennaMap.size())
+					{
+						if (isAntinodeUnique(antinodeTwo, antinodesPositionsVector))
+						{
+							antinodesPositionsVector.push_back(antinodeTwo);
+							antinodesMap[antinodeTwo.y][antinodeTwo.x] = '#';
+						}
+						antinodeTwo = antinodeTwo + antinodePos;
 					}
 				}
 			}
@@ -110,8 +142,9 @@ void dayEight(const bool& isPartTwo)
 	currentPos.y = 0;
 	finalValue = antinodesPositionsVector.size();
 
-	for (int i = 0; i < antinodesMap.size(); i++)
-		std::cout << antinodesMap[i] << std::endl;
+	//// DEBUG LINES - DISPLAYING THE ANTINODES
+	//for (int i = 0; i < antinodesMap.size(); i++)
+	//	std::cout << antinodesMap[i] << std::endl;
 
 	std::cout << "FINAL VALUE = " << finalValue << std::endl;
 }
