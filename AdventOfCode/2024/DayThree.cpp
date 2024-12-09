@@ -1,5 +1,48 @@
 #include "DayThree.h"
 
+void cleanZonesVectors(std::vector<std::size_t>& doTriggers, std::vector<std::size_t>& dontTriggers)
+{
+	std::vector<char>	safeOrUnsafe;
+	int	x = 0;
+	int y = 0;
+
+	while (x < doTriggers.size() && y < dontTriggers.size())
+	{
+		if (doTriggers[x] < dontTriggers[y])
+		{
+			safeOrUnsafe.push_back('s');
+			x += 1;
+		}
+		else if (doTriggers[x] > dontTriggers[y])
+		{
+			safeOrUnsafe.push_back('u');
+			y += 1;
+		}
+	}
+	while (x++ < doTriggers.size())
+		safeOrUnsafe.push_back('s');
+	while (y++ < dontTriggers.size())
+		safeOrUnsafe.push_back('u');
+
+	x = 1;
+	y = 0;
+
+	for (int i = 1; i < safeOrUnsafe.size(); i++)
+	{
+		if (safeOrUnsafe[i] == safeOrUnsafe[i - 1])
+		{
+			if (safeOrUnsafe[i] == 's')
+				doTriggers.erase(doTriggers.begin() + x);
+			else
+				dontTriggers.erase(dontTriggers.begin() + y);
+		}
+		else if (safeOrUnsafe[i] == 's')
+			x += 1;
+		else
+			y += 1;
+	}
+}
+
 bool checkIfInSafeZone(const size_t& pos, const std::vector<t_SafeZones>& safeZones)
 {
 	bool	safeZoneFound = false;
@@ -131,7 +174,7 @@ unsigned long int verifyAndMultiply(const std::string& _s)
 
 void dayThree(const bool& isPartTwo)
 {
-	FileParser	_file("2024\\InputFiles\\inputD3.txt");
+	FileParser	_file("2024\\InputFiles\\inputD3bis.txt");
 	std::string	line;
 	unsigned long long int	finalValue = 0;
 
@@ -190,6 +233,8 @@ void dayThree(const bool& isPartTwo)
 			dontMatchPos += 1;
 		}
 
+		cleanZonesVectors(doTriggers, dontTriggers);
+
 		std::cout << "START OF SAFE ZONES" << std::endl;
 		for (int i = 0; i < doTriggers.size(); i++)
 			std::cout << doTriggers[i] << " ";
@@ -223,6 +268,7 @@ void dayThree(const bool& isPartTwo)
 		safeZones.clear();
 		doTriggers.clear();
 		dontTriggers.clear();
+		//doTriggers.push_back(0);
 	}
 
 	std::cout << "FINAL VALUE = " << finalValue << std::endl;
