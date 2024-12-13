@@ -22,6 +22,7 @@
     <ClInclude Include="2024\DayEight.h" />
     <ClInclude Include="2024\DayFive.h" />
     <ClInclude Include="2024\DayFour.h" />
+    <ClInclude Include="2024\DayNine.h" />
     <ClInclude Include="2024\DayOne.h" />
     <ClInclude Include="2024\DaySeven.h" />
     <ClInclude Include="2024\DaySix.h" />
@@ -29,11 +30,13 @@
     <ClInclude Include="2024\DayTwo.h" />
     <ClInclude Include="2024\FileParser.h" />
     <ClInclude Include="2024\main.h" />
+    <ClInclude Include="2024\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2024\DayEight.cpp" />
     <ClCompile Include="2024\DayFive.cpp" />
     <ClCompile Include="2024\DayFour.cpp" />
+    <ClCompile Include="2024\DayNine.cpp" />
     <ClCompile Include="2024\DayOne.cpp" />
     <ClCompile Include="2024\DaySeven.cpp" />
     <ClCompile Include="2024\DaySix.cpp" />
@@ -41,6 +44,7 @@
     <ClCompile Include="2024\DayTwo.cpp" />
     <ClCompile Include="2024\FileParser.cpp" />
     <ClCompile Include="2024\main.cpp" />
+    <ClCompile Include="2024\utils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
