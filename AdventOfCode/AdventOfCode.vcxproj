@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="2024\DayEight.h" />
     <ClInclude Include="2024\DayEighteen.h" />
+    <ClInclude Include="2024\DayFifteen.h" />
     <ClInclude Include="2024\DayFive.h" />
     <ClInclude Include="2024\DayFour.h" />
     <ClInclude Include="2024\DayNine.h" />
@@ -37,6 +38,7 @@
   <ItemGroup>
     <ClCompile Include="2024\DayEight.cpp" />
     <ClCompile Include="2024\DayEighteen.cpp" />
+    <ClCompile Include="2024\DayFifteen.cpp" />
     <ClCompile Include="2024\DayFive.cpp" />
     <ClCompile Include="2024\DayFour.cpp" />
     <ClCompile Include="2024\DayNine.cpp" />

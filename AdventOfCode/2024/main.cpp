@@ -8,7 +8,7 @@ int main()
 	//dayFour();
 	//dayFive(true); // PART ONE OK BUT PART TWO NOT YET
 	//daySix(true); // PART ON OK BUT PART TWO NOT YET
-	//daySeven(); // BARELY STARTED
+	//daySeven();
 	//dayEight();
 	//dayNine();
 
@@ -16,7 +16,7 @@ int main()
 
 	//dayThirteen();
 
-
+	//dayFifteen(true); // PART 2 NOT FINISHED
 
 
 	//dayEighteen();
