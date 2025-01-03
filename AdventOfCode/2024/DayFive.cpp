@@ -5,18 +5,8 @@ bool checkRules(std::vector<int>& _updates, std::map<int, std::vector<int>>& _ru
 	bool	areRulesRespected = true;
 	bool isSorted = true;
 
-	//std::cout << "UPDATES : ";
-	//for (int x = 0; x < _updates.size(); x++)
-	//	std::cout << _updates[x] << " ";
-	//std::cout << std::endl;
-
 	for (int i = 0; i < _updates.size() && areRulesRespected; i++) // On prend une page après l'autre
 	{
-		//std::cout << "RULES : ";
-		//for (int x = 0; x < _rules[_updates[i]].size(); x++)
-		//	std::cout << _rules[_updates[i]][x] << " ";
-		//std::cout << std::endl;
-
 		std::vector<int>	tmp = _rules[_updates[i]];
 
 		for (int j = i + 1; j < _updates.size() && areRulesRespected; j++) // Pour chaque page suivant la page en cours, on analyse les pages suivantes, une par une
@@ -24,16 +14,11 @@ bool checkRules(std::vector<int>& _updates, std::map<int, std::vector<int>>& _ru
 			for (int k = 0; k < tmp.size() && areRulesRespected; k++) // Pour chaque page analysée, on vérifie si elle respecte les règles
 			{
 				if (tmp[k] == _updates[j])
-				{
-					//std::cout << "Error : Forbidden move" << std::endl;
 					areRulesRespected = false;
-				}
 			}
 			tmp.clear();
 		}
 	}
-
-	//std::cout << std::endl;
 
 	if (areRulesRespected && isPartTwo)
 		return false;
@@ -41,6 +26,36 @@ bool checkRules(std::vector<int>& _updates, std::map<int, std::vector<int>>& _ru
 		return true;
 	else
 		return areRulesRespected;
+}
+
+void orderArray(std::vector<int>& _updates, std::map<int, std::vector<int>>& _rules, const bool& isPartTwo)
+{
+	bool	areRulesRespected = false;
+	bool isSorted = true;
+
+	for (int i = 0; i < _updates.size() || !areRulesRespected; i++)
+	{
+		areRulesRespected = true;
+
+		std::vector<int>	tmp = _rules[_updates[i]];
+
+		for (int j = i + 1; j < _updates.size() && areRulesRespected; j++)
+		{
+			for (int k = 0; k < tmp.size() && areRulesRespected; k++)
+			{
+				if (tmp[k] == _updates[j])
+				{
+					int		tmpUpdate = _updates[i];
+
+					_updates[i] = _updates[j];
+					_updates[j] = tmpUpdate;
+					areRulesRespected = false;
+					i = -1;
+				}
+			}
+			tmp.clear();
+		}
+	}
 }
 
 void dayFive(const bool& isPartTwo)
@@ -59,10 +74,7 @@ void dayFive(const bool& isPartTwo)
 		std::vector<int>	tmpVec;
 
 		if (pagesRules.find(pageB) != pagesRules.end())
-		{
-			//std::cout << "EXISTING ENTRY FOR PAGE " << pageA << " -> PAGE " << pagesRules[pageA][0] << " SHOULD BE PRINTED BEFORE !" << std::endl;
 			pagesRules[pageB].push_back(pageA);
-		}
 		else
 		{
 			tmpVec.push_back(pageA);
@@ -96,14 +108,18 @@ void dayFive(const bool& isPartTwo)
 
 	for (int i = 0; i < updates.size(); i++)
 	{
-		if (checkRules(updates[i], pagesRules, isPartTwo))
-			finalValue += updates[i][updates[i].size() / 2];
+		if (checkRules(updates[i], pagesRules))
+		{
+			if (!isPartTwo)
+				finalValue += updates[i][updates[i].size() / 2];
+		}
 		else
+		{
+			orderArray(updates[i], pagesRules);
+			finalValue += updates[i][updates[i].size() / 2];
 			nbFalse += 1;
+		}
 	}
 
-	//std::cout << "UPDATE VECTOR SIZE = " << updates.size() << std::endl;
-
-	std::cout << "WRONG UPDATES = " << nbFalse << "/" << updates.size() << std::endl;
-	//std::cout << "FINAL VALUE = " << finalValue << std::endl;
+	std::cout << "FINAL VALUE = " << finalValue << std::endl;
 }
