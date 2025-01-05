@@ -18,3 +18,10 @@ std::string& operator*(std::string& _left, const unsigned long long int& _right)
 
     return (result);
 }
+
+bool& operator==(const t_Pos& _left, const t_Pos& _right)
+{
+    bool    result = _left.x == _right.x && _left.y == _right.y;
+
+    return (result);
+}
