@@ -29,6 +29,7 @@
     <ClInclude Include="2024\DayOne.h" />
     <ClInclude Include="2024\DaySeven.h" />
     <ClInclude Include="2024\DaySix.h" />
+    <ClInclude Include="2024\DaySixteen.h" />
     <ClInclude Include="2024\DayTen.h" />
     <ClInclude Include="2024\DayThirteen.h" />
     <ClInclude Include="2024\DayThree.h" />
@@ -48,6 +49,7 @@
     <ClCompile Include="2024\DayOne.cpp" />
     <ClCompile Include="2024\DaySeven.cpp" />
     <ClCompile Include="2024\DaySix.cpp" />
+    <ClCompile Include="2024\DaySixteen.cpp" />
     <ClCompile Include="2024\DayTen.cpp" />
     <ClCompile Include="2024\DayThirteen.cpp" />
     <ClCompile Include="2024\DayThree.cpp" />
