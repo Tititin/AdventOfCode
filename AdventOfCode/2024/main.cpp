@@ -17,9 +17,11 @@ int main()
 	//dayThirteen();
 	//dayFourteen();
 	//dayFifteen(true); // PART 2 NOT FINISHED
-	daySixteen();
+	//daySixteen();
 
 	//dayEighteen();
+
+	//dayTwenty(true); // PART ONE OK, PART TWO WORK IN PROGRESS
 
 	return (0);
 }
