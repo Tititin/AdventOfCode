@@ -32,3 +32,24 @@ bool& operator!=(const t_Pos& _left, const t_Pos& _right)
 
     return (result);
 }
+
+size_t FunctionQueue::getSize()
+{
+    return size_t(tasks.size());
+}
+
+void FunctionQueue::addTask(std::function<void()> _task)
+{
+    tasks.push(_task);
+}
+
+void FunctionQueue::executeTasks()
+{
+    while (!tasks.empty())
+    {
+        auto task = tasks.front();
+        tasks.pop();
+
+        task();
+    }
+}
