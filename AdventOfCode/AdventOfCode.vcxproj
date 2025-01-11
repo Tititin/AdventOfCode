@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="2020\FileParser.cpp" />
+    <ClCompile Include="2020\main.cpp" />
+    <ClCompile Include="2020\utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2020\FileParser.h" />
+    <ClInclude Include="2020\main.h" />
+    <ClInclude Include="2020\utils.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
