@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2020\DayOne.cpp" />
+    <ClCompile Include="2020\DayThree.cpp" />
     <ClCompile Include="2020\DayTwo.cpp" />
     <ClCompile Include="2020\FileParser.cpp" />
     <ClCompile Include="2020\main.cpp" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2020\DayOne.h" />
+    <ClInclude Include="2020\DayThree.h" />
     <ClInclude Include="2020\DayTwo.h" />
     <ClInclude Include="2020\FileParser.h" />
     <ClInclude Include="2020\main.h" />
