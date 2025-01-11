@@ -1,10 +1,15 @@
 #include "DaySixteen.h"
 
 // NOTE :	Algo is good, but... on a giant maze it causes a stack overflow due to too much recursivity.
+//			I replaced recursivity by function queue. It works better... at least on the overflow issue.
+//			But since the algorithm test EVERY SINGLE DAMNED path possibilities, it takes an ETERNITY to find the solution.
 //			Maybe try to use some kind of chunks ?
 //			Or... Try to concentrate on nodes, maybe ? (Nodes are points in the maze where we can start multiple paths)
 //			Let's use the notebook on a smaller maze for the second idea
-//			Brainstorm tomorrow
+//			Simeon found the solution rapidly by using A* algorithm... Time to learn it, maybe ?
+
+FunctionQueue	mazeRunners;
+int				maxRunners = 0;
 
 void runMaze(t_MazeRunner _runner, const std::vector<std::string>& _maze, std::vector<std::vector<long int>>& _distances)
 {
@@ -18,52 +23,58 @@ void runMaze(t_MazeRunner _runner, const std::vector<std::string>& _maze, std::v
 	//std::cout << "MAZE CURRENT DISTANCE : " << _distances[_runner.currentPos.y][_runner.currentPos.x] << std::endl;
 	//std::cout << std::endl;
 
+	system("cls");
+	if (mazeRunners.getSize() > maxRunners)
+		maxRunners = mazeRunners.getSize();
+	std::cout << "CURRENT RUNNERS : " << mazeRunners.getSize() << " / " << maxRunners << std::endl;
+	std::cout << "DISTANCE TO END : " << _distances[_runner.endToReach.y][_runner.endToReach.x] << std::endl;
+
 	if (_runner.currentPos != _runner.endToReach)
 	{
 		switch (_runner.currentDirection)
 		{
 		case RIGHT:
 			if (_runner.currentPos.y - 1 >= 0 && _distances[_runner.currentPos.y - 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y - 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y - 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x + 1 < _maze[_runner.currentPos.y].size() && _distances[_runner.currentPos.y][_runner.currentPos.x + 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x + 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1 < _distances[_runner.currentPos.y][_runner.currentPos.x + 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.y + 1 < _maze.size() && _distances[_runner.currentPos.y + 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y + 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y + 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x - 1 >= 0 && _distances[_runner.currentPos.y][_runner.currentPos.x - 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x - 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y][_runner.currentPos.x - 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			break;
 
 		case LEFT:
 			if (_runner.currentPos.y - 1 >= 0 && _distances[_runner.currentPos.y - 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y - 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y - 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x + 1 < _maze[_runner.currentPos.y].size() && _distances[_runner.currentPos.y][_runner.currentPos.x + 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x + 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y][_runner.currentPos.x + 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.y + 1 < _maze.size() && _distances[_runner.currentPos.y + 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y + 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y + 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x - 1 >= 0 && _distances[_runner.currentPos.y][_runner.currentPos.x - 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x - 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1 < _distances[_runner.currentPos.y][_runner.currentPos.x - 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			break;
 
 		case UP:
 			if (_runner.currentPos.y - 1 >= 0 && _distances[_runner.currentPos.y - 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y - 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1 < _distances[_runner.currentPos.y - 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x + 1 < _maze[_runner.currentPos.y].size() && _distances[_runner.currentPos.y][_runner.currentPos.x + 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x + 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y][_runner.currentPos.x + 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.y + 1 < _maze.size() && _distances[_runner.currentPos.y + 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y + 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y + 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x - 1 >= 0 && _distances[_runner.currentPos.y][_runner.currentPos.x - 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x - 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y][_runner.currentPos.x - 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			break;
 
 		case DOWN:
 			if (_runner.currentPos.y - 1 >= 0 && _distances[_runner.currentPos.y - 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y - 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y - 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y - 1}, UP, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x + 1 < _maze[_runner.currentPos.y].size() && _distances[_runner.currentPos.y][_runner.currentPos.x + 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x + 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y][_runner.currentPos.x + 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x + 1, _runner.currentPos.y}, RIGHT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.y + 1 < _maze.size() && _distances[_runner.currentPos.y + 1][_runner.currentPos.x] != -2 && (_distances[_runner.currentPos.y + 1][_runner.currentPos.x] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1 < _distances[_runner.currentPos.y + 1][_runner.currentPos.x]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x, _runner.currentPos.y + 1}, DOWN, 1 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			if (_runner.currentPos.x - 1 >= 0 && _distances[_runner.currentPos.y][_runner.currentPos.x - 1] != -2 && (_distances[_runner.currentPos.y][_runner.currentPos.x - 1] == -1 || _distances[_runner.currentPos.y][_runner.currentPos.x] + 1001 < _distances[_runner.currentPos.y][_runner.currentPos.x - 1]))
-				runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances);
+				mazeRunners.addTask([=, &_distances]() { runMaze(t_MazeRunner{ t_Pos{_runner.currentPos.x - 1, _runner.currentPos.y}, LEFT, 1001 + currentDistance, _runner.endToReach }, _maze, _distances); });
 			break;
 		}
 	}
@@ -117,7 +128,9 @@ void daySixteen(const bool& isPartTwo)
 	runner.endToReach = mazeEnd;
 
 	// Launching maze runner
-	runMaze(runner, mazeMap, mazeDistances);
+	//runMaze(runner, mazeMap, mazeDistances);
+	mazeRunners.addTask([=, &mazeDistances]() { runMaze(runner, mazeMap, mazeDistances); });
+	mazeRunners.executeTasks();
 
 	// Getting final result
 	finalValue = mazeDistances[mazeEnd.y][mazeEnd.x];
