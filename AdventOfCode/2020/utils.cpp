@@ -1,5 +1,14 @@
 #include "utils.h"
 
+std::string readWord(std::istringstream& _stream)
+{
+    std::string word;
+
+    _stream >> word;
+    
+    return (word);
+}
+
 std::string& operator*(std::string& _left, const unsigned long long int& _right)
 {
     std::string result;
