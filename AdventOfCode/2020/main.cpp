@@ -7,4 +7,6 @@ void main()
 	//dayThree();
 	//dayFour();
 	//dayFive();
+	//daySix();
+	daySeven();
 }

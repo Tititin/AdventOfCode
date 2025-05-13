@@ -22,6 +22,8 @@
     <ClCompile Include="2020\DayFive.cpp" />
     <ClCompile Include="2020\DayFour.cpp" />
     <ClCompile Include="2020\DayOne.cpp" />
+    <ClCompile Include="2020\DaySeven.cpp" />
+    <ClCompile Include="2020\DaySix.cpp" />
     <ClCompile Include="2020\DayThree.cpp" />
     <ClCompile Include="2020\DayTwo.cpp" />
     <ClCompile Include="2020\FileParser.cpp" />
@@ -32,6 +34,8 @@
     <ClInclude Include="2020\DayFive.h" />
     <ClInclude Include="2020\DayFour.h" />
     <ClInclude Include="2020\DayOne.h" />
+    <ClInclude Include="2020\DaySeven.h" />
+    <ClInclude Include="2020\DaySix.h" />
     <ClInclude Include="2020\DayThree.h" />
     <ClInclude Include="2020\DayTwo.h" />
     <ClInclude Include="2020\FileParser.h" />
