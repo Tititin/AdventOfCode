@@ -141,7 +141,7 @@ void daySeventeen(const bool& isPartTwo)
 	unsigned long long int		finalValue = 0;
 
 	// DEBUG
-	FileParser	debugFile("2023\\InputFiles\\inputD17debug.txt");
+	FileParser	debugFile("2023\\InputFiles\\inputD17bis.txt");
 	int	debugWord;
 	//std::map<t_Pos, int>	debugMap;
 	std::vector<t_Pos> debugCoor;
@@ -156,20 +156,20 @@ void daySeventeen(const bool& isPartTwo)
 		distances.push_back(dist);
 	}
 
-	while ((debugWord = debugFile.readWordToInt()) != -1)
-	{
-		debug.x = (long long int)debugWord;
-		debugWord = debugFile.readWordToInt();
-		debug.y = (long long int)debugWord;
-		debugWord = debugFile.readWordToInt();
+	//while ((debugWord = debugFile.readWordToInt()) != -1)
+	//{
+	//	debug.x = (long long int)debugWord;
+	//	debugWord = debugFile.readWordToInt();
+	//	debug.y = (long long int)debugWord;
+	//	debugWord = debugFile.readWordToInt();
 
-		//std::pair<t_Pos, int>
+	//	//std::pair<t_Pos, int>
 
-		//debugMap.insert(std::make_pair(debug, debugWord));
+	//	//debugMap.insert(std::make_pair(debug, debugWord));
 
-		debugCoor.push_back(debug);
-		debugDist.push_back(debugWord);
-	}
+	//	debugCoor.push_back(debug);
+	//	debugDist.push_back(debugWord);
+	//}
 
 	item.currentDistance = distances[startPos.y][startPos.x];
 	item.directionFrom = NONE;
@@ -201,13 +201,14 @@ void daySeventeen(const bool& isPartTwo)
 		std::cout << "CURRENT ITEM POLICIES : " << queue.front().policies.left << "L " << queue.front().policies.down << "D " << queue.front().policies.right << "R "
 			<< queue.front().policies.up << "U" << std::endl;
 		std::cout << "CURRENT PATH LENGTH : " << queue.front().nbCurrentPathLength << " / " << mapHorizontalSize * mapVerticalSize << std::endl;
+		std::cout << "QUEUE SIZE : " << queue.size() << std::endl;
 
 		/*if (queue.front().nbCurrentPathLength < mapHorizontalSize * mapVerticalSize
 			&& (distances[queue.front().pos.y][queue.front().pos.x] == 0
 			|| distances[endPos.y][endPos.x] == 0
 			|| queue.front().currentDistance < distances[endPos.y][endPos.x]))*/
 		if (distances[queue.front().pos.y][queue.front().pos.x] == 0
-			|| queue.front().currentDistance + (map[queue.front().pos.y][queue.front().pos.x] - 48) < distances[queue.front().pos.y][queue.front().pos.x] + 1)
+			|| queue.front().currentDistance + (map[queue.front().pos.y][queue.front().pos.x] - 48) < distances[queue.front().pos.y][queue.front().pos.x] + 2)
 		{
 			if (queue.front().pos == endPos
 				&& (distances[endPos.y][endPos.x] == 0
@@ -247,8 +248,8 @@ void daySeventeen(const bool& isPartTwo)
 					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
 						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
 					if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0
-							|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
+						&& (distances[endPos.y][endPos.x] == 0))
+							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
 						queue.push(item);
 				}
 			}
@@ -270,8 +271,8 @@ void daySeventeen(const bool& isPartTwo)
 					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
 						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
 					if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0
-							|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
+						&& (distances[endPos.y][endPos.x] == 0))
+							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
 						queue.push(item);
 				}
 			}
@@ -293,8 +294,8 @@ void daySeventeen(const bool& isPartTwo)
 					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
 						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
 						if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0
-							|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
+						&& (distances[endPos.y][endPos.x] == 0))
+							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
 						queue.push(item);
 				}
 			}
@@ -316,8 +317,8 @@ void daySeventeen(const bool& isPartTwo)
 					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
 						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
 						if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0
-							|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
+						&& (distances[endPos.y][endPos.x] == 0))
+							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
 						queue.push(item);
 				}
 			}

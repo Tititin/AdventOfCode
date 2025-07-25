@@ -28,7 +28,6 @@ bool isPathTileAlreadyTaken(const std::vector<t_Pos>& _path, const t_Pos& _pos);
 bool operator!=(const t_Pos& _p1, const t_Pos& _p2);
 bool operator==(const t_Pos& _p1, const t_Pos& _p2);
 
-//void moveOnNextTile(std::vector<std::string>& _map, std::vector<std::vector<int>>& _distances, t_DirectionPolicy& _policies, int _currentDistance);
 void updatePolicies(t_DirectionPolicy& _policies, const t_Direction& _targetDirection);
 int getDistanceToTargetTile(const std::vector<std::string>& _map, const t_Pos& _pos);
 
