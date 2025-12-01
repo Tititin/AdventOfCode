@@ -16,6 +16,23 @@
 # Mono auto generated files
 mono_crash.*
 
+# Test input files
+*bis.txt
+*ter.txt
+*quar.txt
+
+# Other years folders
+2015/
+2016/
+2017/
+2018/
+2019/
+2020/
+2021/
+2022/
+2023/
+2024/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
