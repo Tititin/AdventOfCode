@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -37,6 +37,7 @@
     <ClInclude Include="2023\DayThirteen.h" />
     <ClInclude Include="2023\DayThree.h" />
     <ClInclude Include="2023\DayTwelve.h" />
+    <ClInclude Include="2023\DayTwenty.h" />
     <ClInclude Include="2023\DayTwentyOne.h" />
     <ClInclude Include="2023\DayTwentyThree.h" />
     <ClInclude Include="2023\DayTwentyTwo.h" />
@@ -63,6 +64,7 @@
     <ClCompile Include="2023\DayThirteen.cpp" />
     <ClCompile Include="2023\DayThree.cpp" />
     <ClCompile Include="2023\DayTwelve.cpp" />
+    <ClCompile Include="2023\DayTwenty.cpp" />
     <ClCompile Include="2023\DayTwentyOne.cpp" />
     <ClCompile Include="2023\DayTwentyThree.cpp" />
     <ClCompile Include="2023\DayTwentyTwo.cpp" />
@@ -82,6 +84,7 @@
     <Text Include="2023\InputFiles\inputD18.txt" />
     <Text Include="2023\InputFiles\inputD19.txt" />
     <Text Include="2023\InputFiles\inputD2.txt" />
+    <Text Include="2023\InputFiles\inputD20.txt" />
     <Text Include="2023\InputFiles\inputD21.txt" />
     <Text Include="2023\InputFiles\inputD3.txt" />
     <Text Include="2023\InputFiles\inputD4.txt" />

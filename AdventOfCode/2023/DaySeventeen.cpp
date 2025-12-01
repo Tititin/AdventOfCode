@@ -138,6 +138,8 @@ void daySeventeen(const bool& isPartTwo)
 
 	std::queue<t_TileQueueItem>	queue;
 
+	int						runnerZeroDeviation = 0;
+
 	unsigned long long int		finalValue = 0;
 
 	// DEBUG
@@ -156,40 +158,74 @@ void daySeventeen(const bool& isPartTwo)
 		distances.push_back(dist);
 	}
 
-	//while ((debugWord = debugFile.readWordToInt()) != -1)
-	//{
-	//	debug.x = (long long int)debugWord;
-	//	debugWord = debugFile.readWordToInt();
-	//	debug.y = (long long int)debugWord;
-	//	debugWord = debugFile.readWordToInt();
-
-	//	//std::pair<t_Pos, int>
-
-	//	//debugMap.insert(std::make_pair(debug, debugWord));
-
-	//	debugCoor.push_back(debug);
-	//	debugDist.push_back(debugWord);
-	//}
-
 	item.currentDistance = distances[startPos.y][startPos.x];
 	item.directionFrom = NONE;
 	item.policies = policies;
 	item.pos = startPos;
 	item.nbCurrentPathLength = 0;
-	//item.currentPathTiles.push_back(startPos);
 
 	queue.push(item);
 
 	mapVerticalSize = map.size();
 	mapHorizontalSize = map[0].size();
-	//endPos = t_Pos{ 0, 0 };
-	//startPos = t_Pos{ mapHorizontalSize - 1, mapVerticalSize - 1 };
 	endPos = t_Pos{ mapHorizontalSize - 1, mapVerticalSize - 1 };
 
-	//item.pos = startPos;
-	//queue.push(item);
-
 	map[0][0] = '0'; // GROSS
+
+	// RUNNER ZERO
+	while (distances[endPos.y][endPos.x] == 0)
+	{
+		while (item.pos.x != endPos.x)
+		{
+			distances[item.pos.y][item.pos.x] = item.currentDistance + map[item.pos.y][item.pos.x] - 48;
+			item.currentDistance = distances[item.pos.y][item.pos.x];
+			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ item.pos.x + 1, item.pos.y }) && !doesPolicyBlockMove(item.policies, RIGHT))
+			{
+				item.directionFrom = LEFT;
+				updatePolicies(item.policies, RIGHT);
+				item.pos.x += 1;
+				item.nbCurrentPathLength += 1;
+			}
+			else if (doesPolicyBlockMove(item.policies, RIGHT))
+			{
+				item.directionFrom = UP;
+				updatePolicies(item.policies, DOWN);
+				item.pos.y += 1;
+				item.nbCurrentPathLength += 1;
+			}
+		}
+		while (item.pos.y != endPos.y)
+		{
+			distances[item.pos.y][item.pos.x] = item.currentDistance + map[item.pos.y][item.pos.x] - 48;
+			item.currentDistance = distances[item.pos.y][item.pos.x];
+			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ item.pos.x, item.pos.y + 1 }) && !doesPolicyBlockMove(item.policies, DOWN) && runnerZeroDeviation != 2)
+			{
+				item.directionFrom = UP;
+				updatePolicies(item.policies, DOWN);
+				item.pos.y += 1;
+				item.nbCurrentPathLength += 1;
+				if (runnerZeroDeviation == 1)
+					runnerZeroDeviation = 2;
+			}
+			else if (doesPolicyBlockMove(item.policies, DOWN) && runnerZeroDeviation == 0)
+			{
+				item.directionFrom = RIGHT;
+				updatePolicies(item.policies, LEFT);
+				item.pos.x -= 1;
+				item.nbCurrentPathLength += 1;
+				runnerZeroDeviation = 1;
+			}
+			else
+			{
+				item.directionFrom = LEFT;
+				updatePolicies(item.policies, RIGHT);
+				item.pos.x += 1;
+				item.nbCurrentPathLength += 1;
+				runnerZeroDeviation = 0;
+			}
+		}
+		distances[endPos.y][endPos.y] = item.currentDistance + map[endPos.y][endPos.x] - 48;
+	}
 
 	for (; !queue.empty(); queue.pop())
 	{
@@ -203,128 +239,70 @@ void daySeventeen(const bool& isPartTwo)
 		std::cout << "CURRENT PATH LENGTH : " << queue.front().nbCurrentPathLength << " / " << mapHorizontalSize * mapVerticalSize << std::endl;
 		std::cout << "QUEUE SIZE : " << queue.size() << std::endl;
 
-		/*if (queue.front().nbCurrentPathLength < mapHorizontalSize * mapVerticalSize
-			&& (distances[queue.front().pos.y][queue.front().pos.x] == 0
-			|| distances[endPos.y][endPos.x] == 0
-			|| queue.front().currentDistance < distances[endPos.y][endPos.x]))*/
-		if (distances[queue.front().pos.y][queue.front().pos.x] == 0
-			|| queue.front().currentDistance + (map[queue.front().pos.y][queue.front().pos.x] - 48) < distances[queue.front().pos.y][queue.front().pos.x] + 2)
-		{
-			if (queue.front().pos == endPos
-				&& (distances[endPos.y][endPos.x] == 0
-					|| queue.front().currentDistance + map[endPos.y][endPos.x] - 48 < distances[endPos.y][endPos.x]))
-				distances[queue.front().pos.y][queue.front().pos.x] = queue.front().currentDistance + (map[queue.front().pos.y][queue.front().pos.x] - 48);
-			else if (queue.front().pos != endPos)
-				distances[queue.front().pos.y][queue.front().pos.x] = queue.front().currentDistance + (map[queue.front().pos.y][queue.front().pos.x] - 48);
-			item.currentDistance = distances[queue.front().pos.y][queue.front().pos.x];
-			item.nbCurrentPathLength = queue.front().nbCurrentPathLength + 1;
-			//item.currentPathTiles.push_back(queue.front().pos);
-			//if (queue.front().pos != endPos)
-			//{
-			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ queue.front().pos.x - 1, queue.front().pos.y }))
-			{
-				//if (queue.front().directionFrom != LEFT)
-				if (!doesPolicyBlockMove(queue.front().policies, LEFT) && queue.front().directionFrom != LEFT)
-				{
-					//item.currentDistance = distances[queue.front().pos.y][queue.front().pos.x];
-					item.policies = queue.front().policies;
-					updatePolicies(item.policies, LEFT);
-					item.pos.x = queue.front().pos.x - 1;
-					item.pos.y = queue.front().pos.y;
-					item.directionFrom = RIGHT;
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[item.pos.y][item.pos.x] > queue.front().currentDistance + (map[item.pos.y][item.pos.x] - 48)
-							|| distances[item.pos.y][item.pos.x] == 0))
-						queue.push(item);*/
-						/* Si la position actuelle n'est pas celle de fin
-						*  ET que la position suivante est valide
-						*  ET que la case de fin n'ait pas encore été atteinte
-						*		OU que la distance parcourue actuelle est inférieure à la distance la plus courte de la fin trouvée actuellement
-						*
-						* ALORS on ajoute la position suivante à la liste (si la distance est inférieure, peut-être que nous avons une chance d'atteindre la fin plus vite)
-						* (si on tourne en rond, bah tôt ou tard on va dépasser la distance la plus courte de la fin, donc inutile de forcer)
-						*/
+		item = queue.front();
 
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
-					if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0))
-							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
-						queue.push(item);
-				}
-			}
-			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ queue.front().pos.x, queue.front().pos.y - 1 }))
+		// UPDATE DISTANCES
+		if (item.pos != endPos || distances[item.pos.y][item.pos.x] > item.currentDistance + map[item.pos.y][item.pos.x] - 48)
+			distances[item.pos.y][item.pos.x] = item.currentDistance + map[item.pos.y][item.pos.x] - 48;
+		item.currentDistance = distances[item.pos.y][item.pos.x];
+		item.currentPathTiles.push_back(item.pos);
+
+		// ANALYZE NEXT TILES
+			// Check #1 : Check if distance < endPoint current distance && not back at startPoint (pos == startPos && distance > 0)
+			// Check #2 : Check if position is valid and authorized by current policies
+			// Check #3 : Check if next tile is not 9
+		if (item.currentDistance < distances[endPos.y][endPos.x]
+			&& ((item.pos == startPos && item.currentDistance == 0) || item.pos != startPos))
+		{
+			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ item.pos.x + 1, item.pos.y }) && !doesPolicyBlockMove(item.policies, RIGHT)
+				&& item.directionFrom != RIGHT)
 			{
-				//if (queue.front().directionFrom != UP)
-				if (!doesPolicyBlockMove(queue.front().policies, UP) && queue.front().directionFrom != UP)
+				if (map[item.pos.y][item.pos.x + 1] != '9' && !isPathTileAlreadyTaken(item.currentPathTiles, t_Pos{item.pos.x + 1, item.pos.y}))
 				{
-					//item.currentDistance = distances[queue.front().pos.y][queue.front().pos.x];
-					item.policies = queue.front().policies;
-					updatePolicies(item.policies, UP);
-					item.pos.x = queue.front().pos.x;
-					item.pos.y = queue.front().pos.y - 1;
-					item.directionFrom = DOWN;
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[item.pos.y][item.pos.x] > queue.front().currentDistance + (map[item.pos.y][item.pos.x] - 48)
-							|| distances[item.pos.y][item.pos.x] == 0))
-						queue.push(item);*/
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
-					if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0))
-							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
-						queue.push(item);
-				}
-			}
-			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ queue.front().pos.x + 1, queue.front().pos.y }))
-			{
-				//if (queue.front().directionFrom != RIGHT)
-				if (!doesPolicyBlockMove(queue.front().policies, RIGHT) && queue.front().directionFrom != RIGHT)
-				{
-					//item.currentDistance = distances[queue.front().pos.y][queue.front().pos.x];
-					item.policies = queue.front().policies;
-					updatePolicies(item.policies, RIGHT);
-					item.pos.x = queue.front().pos.x + 1;
-					item.pos.y = queue.front().pos.y;
 					item.directionFrom = LEFT;
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[item.pos.y][item.pos.x] > queue.front().currentDistance + (map[item.pos.y][item.pos.x] - 48)
-							|| distances[item.pos.y][item.pos.x] == 0))
-						queue.push(item);*/
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
-						if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0))
-							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
-						queue.push(item);
+					updatePolicies(item.policies, RIGHT);
+					item.pos.x += 1;
+					item.nbCurrentPathLength += 1;
+					queue.push(item);
 				}
 			}
-			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ queue.front().pos.x, queue.front().pos.y + 1 }))
+			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ item.pos.x, item.pos.y + 1 }) && !doesPolicyBlockMove(item.policies, DOWN)
+				&& item.directionFrom != DOWN)
 			{
-				//if (queue.front().directionFrom != DOWN)
-				if (!doesPolicyBlockMove(queue.front().policies, DOWN) && queue.front().directionFrom != DOWN)
+				if (map[item.pos.y + 1][item.pos.x] != '9' && !isPathTileAlreadyTaken(item.currentPathTiles, t_Pos{ item.pos.x, item.pos.y + 1 }))
 				{
-					//item.currentDistance = distances[queue.front().pos.y][queue.front().pos.x];
-					item.policies = queue.front().policies;
-					updatePolicies(item.policies, DOWN);
-					item.pos.x = queue.front().pos.x;
-					item.pos.y = queue.front().pos.y + 1;
 					item.directionFrom = UP;
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[item.pos.y][item.pos.x] > queue.front().currentDistance + (map[item.pos.y][item.pos.x] - 48)
-							|| distances[item.pos.y][item.pos.x] == 0))
-						queue.push(item);*/
-					/*if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& !isPathTileAlreadyTaken(queue.front().currentPathTiles, item.pos))*/
-						if (queue.front().pos != endPos && isPositionValid(mapVerticalSize, mapHorizontalSize, item.pos)
-						&& (distances[endPos.y][endPos.x] == 0))
-							//|| (distances[endPos.y][endPos.x] >= item.currentDistance)))
-						queue.push(item);
+					updatePolicies(item.policies, DOWN);
+					item.pos.y += 1;
+					item.nbCurrentPathLength += 1;
+					queue.push(item);
 				}
 			}
-			//}
+			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ item.pos.x - 1, item.pos.y }) && !doesPolicyBlockMove(item.policies, LEFT)
+				&& item.directionFrom != LEFT)
+			{
+				if (map[item.pos.y][item.pos.x - 1] != '9' && !isPathTileAlreadyTaken(item.currentPathTiles, t_Pos{ item.pos.x - 1, item.pos.y }))
+				{
+					item.directionFrom = RIGHT;
+					updatePolicies(item.policies, LEFT);
+					item.pos.x -= 1;
+					item.nbCurrentPathLength += 1;
+					queue.push(item);
+				}
+			}
+			if (isPositionValid(mapVerticalSize, mapHorizontalSize, t_Pos{ item.pos.x, item.pos.y - 1 }) && !doesPolicyBlockMove(item.policies, UP)
+				&& item.directionFrom != UP)
+			{
+				if (map[item.pos.y - 1][item.pos.x] != '9' && !isPathTileAlreadyTaken(item.currentPathTiles, t_Pos{ item.pos.x, item.pos.y - 1 }))
+				{
+					item.directionFrom = DOWN;
+					updatePolicies(item.policies, UP);
+					item.pos.x += 1;
+					item.nbCurrentPathLength += 1;
+					queue.push(item);
+				}
+			}
 		}
-		//displayDistances(distances);
 
 		for (int i = 0; i < distances[0].size() * 4 + 1; i++)
 			std::cout << "-";
@@ -346,15 +324,12 @@ void daySeventeen(const bool& isPartTwo)
 							SetConsoleTextAttribute(hConsole, 10);
 					}
 				}
-				/*else if (debugMap.find(debugPos) != debugMap.end())
-					SetConsoleTextAttribute(hConsole, 10);*/
 				std::cout << (distances[y][x] / 100);
 				std::cout << (distances[y][x] % 100 / 10);
 				std::cout << (distances[y][x] % 10);
 				SetConsoleTextAttribute(hConsole, 8);
 				std::cout << "|";
 			}
-			//std::cout << (_distances[y][x] + 48) % 10;
 			std::cout << std::endl;
 		}
 
@@ -362,18 +337,9 @@ void daySeventeen(const bool& isPartTwo)
 			std::cout << "-";
 		std::cout << std::endl;
 
-		//Sleep(5000);
 	}
 
-
-	/*for (int y = 0; y < distances.size(); y++)
-	{
-		for (int x = 0; x < distances[y].size(); x++)
-			std::cout << (distances[y][x] + 48) % 10;
-		std::cout << std::endl;
-	}*/
 	finalValue = distances[endPos.y][endPos.x];
-	//finalValue = item.currentDistance;
 
 	std::cout << "FINAL VALUE = " << finalValue << std::endl;
 }
