@@ -22,9 +22,13 @@
     <Text Include="2025\InputFiles\inputD1.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2025\DayOne.h" />
+    <ClInclude Include="2025\FileParser.h" />
     <ClInclude Include="2025\main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2025\DayOne.cpp" />
+    <ClCompile Include="2025\FileParser.cpp" />
     <ClCompile Include="2025\main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
