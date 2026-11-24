@@ -44,6 +44,8 @@ public:
 	int			readWordToInt();
 	std::string readWordToString();
 
+	//std::string	readNextWordToString(const std::string& _line, const char& _separator);
+
 	static bool	checkIsNumber(const std::string& _word);
 };
 

@@ -79,6 +79,21 @@ std::string FileParser::readWordToString()
 	return (word);
 }
 
+//std::string FileParser::readNextWordToString(const std::string& _line, const char& _separator)
+//{
+//	static size_t	currentPos = -1;
+//	size_t			endWordPos = _line.find(_separator, currentPos);
+//
+//	std::string		word = _line.substr(currentPos + 1, endWordPos - currentPos + 1);
+//
+//	if (currentPos == std::string::npos)
+//		return ("");
+//
+//	currentPos = endWordPos;
+//
+//	return (word);
+//}
+
 bool FileParser::checkIsNumber(const std::string& _word)
 {
 	for (int i = 0; i < _word.size(); i++)
