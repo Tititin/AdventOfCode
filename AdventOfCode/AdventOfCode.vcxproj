@@ -33,6 +33,7 @@
     <ClInclude Include="2026\DayTwo.h" />
     <ClInclude Include="2026\FileParser.h" />
     <ClInclude Include="2026\main.h" />
+    <ClInclude Include="2026\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="2026\DayEight.cpp" />
@@ -49,6 +50,7 @@
     <ClCompile Include="2026\DayTwo.cpp" />
     <ClCompile Include="2026\FileParser.cpp" />
     <ClCompile Include="2026\main.cpp" />
+    <ClCompile Include="2026\utils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
