@@ -2,9 +2,18 @@
 
 int main()
 {
-	//dayOne();
-	//dayTwo();
-	dayThree(true);
+	dayOne();
+	dayTwo();
+	dayThree();
+	dayFour();
+	dayFive();
+	daySix();
+	daySeven();
+	dayEleven();
+	dayNine();
+	dayTen();
+	dayEleven();
+	dayTwelve();
 
 	return (0);
 }

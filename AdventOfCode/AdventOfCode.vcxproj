@@ -18,6 +18,38 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="2026\DayEight.h" />
+    <ClInclude Include="2026\DayEleven.h" />
+    <ClInclude Include="2026\DayFive.h" />
+    <ClInclude Include="2026\DayFour.h" />
+    <ClInclude Include="2026\DayNine.h" />
+    <ClInclude Include="2026\DayOne.h" />
+    <ClInclude Include="2026\DaySeven.h" />
+    <ClInclude Include="2026\DaySix.h" />
+    <ClInclude Include="2026\DayTen.h" />
+    <ClInclude Include="2026\DayThree.h" />
+    <ClInclude Include="2026\DayTwelve.h" />
+    <ClInclude Include="2026\DayTwo.h" />
+    <ClInclude Include="2026\FileParser.h" />
+    <ClInclude Include="2026\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="2026\DayEight.cpp" />
+    <ClCompile Include="2026\DayEleven.cpp" />
+    <ClCompile Include="2026\DayFive.cpp" />
+    <ClCompile Include="2026\DayFour.cpp" />
+    <ClCompile Include="2026\DayNine.cpp" />
+    <ClCompile Include="2026\DayOne.cpp" />
+    <ClCompile Include="2026\DaySeven.cpp" />
+    <ClCompile Include="2026\DaySix.cpp" />
+    <ClCompile Include="2026\DayTen.cpp" />
+    <ClCompile Include="2026\DayThree.cpp" />
+    <ClCompile Include="2026\DayTwelve.cpp" />
+    <ClCompile Include="2026\DayTwo.cpp" />
+    <ClCompile Include="2026\FileParser.cpp" />
+    <ClCompile Include="2026\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
