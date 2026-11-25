@@ -2,18 +2,18 @@
 
 int main()
 {
-	dayOne();
-	dayTwo();
-	dayThree();
-	dayFour();
-	dayFive();
-	daySix();
-	daySeven();
-	dayEleven();
-	dayNine();
-	dayTen();
-	dayEleven();
-	dayTwelve();
+	dayOne();		// NOT STARTED
+	dayTwo();		// NOT STARTED
+	dayThree();		// NOT STARTED
+	dayFour();		// NOT STARTED
+	dayFive();		// NOT STARTED
+	daySix();		// NOT STARTED
+	daySeven();		// NOT STARTED
+	dayEleven();	// NOT STARTED
+	dayNine();		// NOT STARTED
+	dayTen();		// NOT STARTED
+	dayEleven();	// NOT STARTED
+	dayTwelve();	// NOT STARTED
 
 	return (0);
 }
