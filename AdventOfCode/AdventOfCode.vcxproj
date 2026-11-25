@@ -52,6 +52,9 @@
     <ClCompile Include="2026\main.cpp" />
     <ClCompile Include="2026\utils.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.gitignore" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
